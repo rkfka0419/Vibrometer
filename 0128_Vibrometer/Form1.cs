@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using NAudio.CoreAudioApi;
 //using System.Numerics;
@@ -22,7 +23,10 @@ namespace _0128_Vibrometer
     {
         public WaveIn wi;
         public BufferedWaveProvider bwp;
-        public Int32 envelopeMax;
+        //public Buffer Buffer = new Buffer();
+        //public Int32 envelopeMax;
+
+        public BufferedStream bs;
 
         private int RATE = 44100; // sample rate of the sound card
         private int BUFFERSIZE = (int)Math.Pow(2, 11); // must be a multiple of 2
@@ -39,7 +43,7 @@ namespace _0128_Vibrometer
             wv_data = new WaveData(RATE);
 
 
-            timer1.Interval = 500;
+            timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
 
             //tChart1.Axes.Left.Automatic = false;
@@ -59,10 +63,12 @@ namespace _0128_Vibrometer
 
             // create a wave buffer and start the recording
             wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
+
+
             bwp = new BufferedWaveProvider(wi.WaveFormat);
             bwp.BufferLength = BUFFERSIZE * 2;
-
             bwp.DiscardOnBufferOverflow = true;
+            
             wi.StartRecording();
 
         }
@@ -70,10 +76,12 @@ namespace _0128_Vibrometer
         private void wi_DataAvailable(object sender, WaveInEventArgs e)
         {
             bwp.AddSamples(e.Buffer, 0, e.BytesRecorded);
+            //Console.WriteLine("e.Buffer = {0},\t e.BytesRecorded = {1}", e.Buffer.Length, e.BytesRecorded);
         }
 
         public void UpdateAudioGraph()
         {
+            //wv_data
             // read the bytes from the stream
             int frameSize = BUFFERSIZE;
             var frames = new byte[frameSize];
@@ -154,16 +162,25 @@ namespace _0128_Vibrometer
 
     public class WaveData
     {
-        private int samplerate;
+        private int samplerate = 0;
         private float[] Data;
 
         public WaveData()
         {
+            this.Data = new float[samplerate];
         }
 
         public WaveData(int sample_rate)
         {
             this.Data = new float[sample_rate];
         }
+
+        public int BufferLength { get; set; }
+        public WaveFormat WaveFormat
+        {
+            get { return WaveFormat; }
+        }
+
+
     }
 }
