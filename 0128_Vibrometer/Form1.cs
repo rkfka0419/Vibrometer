@@ -27,22 +27,24 @@ namespace _0128_Vibrometer
         private int RATE = 44100; // sample rate of the sound card
         private int BUFFERSIZE = (int)Math.Pow(2, 11); // must be a multiple of 2
 
-        //chart libraries;
-        //Steema.TeeChart.Styles.Line line1 = new Steema.TeeChart.Styles.Line();
-
-        
+        //;
+        public WaveData wv_data;
 
         public Form1()
         {
             InitializeComponent();
-            //chart libraries;
+            
+            // Using WaveData class;
+            
+            wv_data = new WaveData(RATE);
+
 
             timer1.Interval = 500;
             timer1.Tick += timer1_Tick;
 
-            tChart1.Axes.Left.Automatic = false;
-            tChart1.Axes.Left.Maximum = 45000;
-            tChart1.Axes.Left.Minimum = -45000;
+            //tChart1.Axes.Left.Automatic = false;
+            //tChart1.Axes.Left.Maximum = 45000;
+            //tChart1.Axes.Left.Minimum = -45000;
 
             // see what audio devices are available
             int devcount = WaveIn.DeviceCount;
@@ -53,7 +55,7 @@ namespace _0128_Vibrometer
             wi.DeviceNumber = 0;
             wi.WaveFormat = new NAudio.Wave.WaveFormat(RATE, 1);
             wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)RATE * 1000.0);
-            //wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)RATE * 10);
+            //wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)RATE * 100);
 
             // create a wave buffer and start the recording
             wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
@@ -122,7 +124,7 @@ namespace _0128_Vibrometer
             for (int i = 0; i < data.Length; i++)
             {
                 fft[i] = fftComplex[i].Magnitude; // back to double
-                //fft[i] = Math.Log10(fft[i]); // convert to dB
+                //fft[i] = Math.Log10(fft[i]); // convert to dB (데시벨)
             }
             return fft;
             //todo: this could be much faster by reusing variables
@@ -146,6 +148,22 @@ namespace _0128_Vibrometer
             Console.WriteLine("line_fft Length = {0}", line_fft.Count);
             line_fft.Clear();
             UpdateAudioGraph();
+        }
+    }
+
+
+    public class WaveData
+    {
+        private int samplerate;
+        private float[] Data;
+
+        public WaveData()
+        {
+        }
+
+        public WaveData(int sample_rate)
+        {
+            this.Data = new float[sample_rate];
         }
     }
 }
