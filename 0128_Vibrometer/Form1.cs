@@ -37,16 +37,12 @@ namespace _0128_Vibrometer
             InitializeComponent();
             //chart libraries;
 
-            //Steema.TeeChart.Styles.Line line1 = new Steema.TeeChart.Styles.Line();
-            //tChart1.Series.Add(line1);
-            //tChart1.Legend.Visible = false;
-
             timer1.Interval = 500;
             timer1.Tick += timer1_Tick;
 
-            //tChart1.Axes.Left.Automatic = false;
-            //tChart1.Axes.Left.Maximum = 45000;
-            //tChart1.Axes.Left.Minimum = -45000;
+            tChart1.Axes.Left.Automatic = false;
+            tChart1.Axes.Left.Maximum = 45000;
+            tChart1.Axes.Left.Minimum = -45000;
 
             // see what audio devices are available
             int devcount = WaveIn.DeviceCount;
@@ -145,7 +141,9 @@ namespace _0128_Vibrometer
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine("line_buffer Length = {0}", line_buffer.Count);
             line_buffer.Clear();
+            Console.WriteLine("line_fft Length = {0}", line_fft.Count);
             line_fft.Clear();
             UpdateAudioGraph();
         }

@@ -45,6 +45,7 @@
             // 
             // StartBtn
             // 
+            this.StartBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StartBtn.Location = new System.Drawing.Point(397, 3);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(207, 87);
@@ -55,6 +56,7 @@
             // 
             // StopBtn
             // 
+            this.StopBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StopBtn.Location = new System.Drawing.Point(640, 6);
             this.StopBtn.Name = "StopBtn";
             this.StopBtn.Size = new System.Drawing.Size(193, 87);
@@ -1416,8 +1418,7 @@
             // 
             // tChart2
             // 
-            this.tChart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tChart2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
@@ -2754,9 +2755,11 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.StopBtn);
             this.panel2.Controls.Add(this.StartBtn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 829);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1174, 100);
