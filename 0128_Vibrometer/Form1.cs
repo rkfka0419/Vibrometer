@@ -19,14 +19,14 @@ namespace _0128_Vibrometer
 {
     public partial class Form1 : Form
     {
-        private int SAMPLE_RATE = (int)(Math.Pow(2, 13)); // sample rate of the sound card
+        private int SAMPLE_RATE = (int)(Math.Pow(2, 12)); // sample rate of the sound card
 
         Queue<float> sampleQueue = new Queue<float>();
 
         public Form1()
         {
             InitializeComponent();
-            
+
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
 
@@ -42,7 +42,7 @@ namespace _0128_Vibrometer
             WaveIn wi = new WaveIn();
             wi.DeviceNumber = 0;
             wi.WaveFormat = new NAudio.Wave.WaveFormat(SAMPLE_RATE, 1);
-            //wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)SAMPLE_RATE * 1000.0);
+            //wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)SAMPLE_RATE * 1000.0); // 존재 유무의 의미가 있을지
 
             wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
             wi.StartRecording();
@@ -55,9 +55,10 @@ namespace _0128_Vibrometer
                 //foreach (var sample in e.Buffer)
                 //    sampleQueue.Enqueue(sample);
 
-                for(int i = 0; i < e.BytesRecorded; i += 2)
+                for (int i = 0; i < e.BytesRecorded; i += 2)
                 {
                     Int16 val = BitConverter.ToInt16(e.Buffer, i);
+                    //Int16 val = short(e.Buffer, i);
                     //sampleQueue.Enqueue((float) ((double)(val) / Math.Pow(2, 16) * 200.0));
                     sampleQueue.Enqueue((float)(double)(val));
                 }
@@ -67,7 +68,7 @@ namespace _0128_Vibrometer
                 {
                     var wave = new WaveData();
                     wave.Data = new float[SAMPLE_RATE];
-                    for (int i=0; i<wave.Data.Length; i++)
+                    for (int i = 0; i < wave.Data.Length; i++)
                     {
                         wave.Data[i] = sampleQueue.Dequeue();
                     }
@@ -88,7 +89,6 @@ namespace _0128_Vibrometer
                   System.DateTime.Now.TimeOfDay.Minutes.ToString() + ":"
                 + System.DateTime.Now.TimeOfDay.Seconds.ToString()
                 + "\tUpdataChart");
-            //float형 데이타를 받아서 그래프 그리기
             line_buffer.Clear();
             line_fft.Clear();
             line_buffer.Add(wave.Data);
@@ -121,34 +121,14 @@ namespace _0128_Vibrometer
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            //wi.StopRecording();
             Console.WriteLine("녹음 중지");
             timer1.Enabled = false;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //do tick;
             tChart1.Invalidate();
             tChart2.Invalidate();
         }
     }
-
-
-    public class WaveData
-    {
-        int samplerate = 0;
-        public float[] Data { get; set; }
-
-        public WaveData()
-        {
-            this.samplerate = 44100;
-        }
-
-        public WaveData(int sample_rate)
-        {
-            this.samplerate = sample_rate;
-        }
-        
-
-    }
 }
+    

@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VibrometerDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="WaveData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

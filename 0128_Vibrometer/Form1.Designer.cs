@@ -105,7 +105,7 @@
             // 
             // 
             // 
-            this.tChart1.Axes.Bottom.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
+            this.tChart1.Axes.Bottom.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.tChart1.Axes.Bottom.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart1.Axes.Bottom.Labels.Font.Shadow.Brush.Visible = true;
             this.tChart1.Axes.Bottom.Labels.Font.Size = 9;
@@ -119,6 +119,7 @@
             this.tChart1.Axes.Bottom.Labels.ImageBevel.Brush.Color = System.Drawing.Color.LightGray;
             this.tChart1.Axes.Bottom.Labels.ImageBevel.Brush.Solid = true;
             this.tChart1.Axes.Bottom.Labels.ImageBevel.Brush.Visible = true;
+            this.tChart1.Axes.Bottom.Labels.Separation = 5;
             // 
             // 
             // 
@@ -1380,7 +1381,7 @@
             this.line_buffer.Marks.TailParams.Margin = 0F;
             this.line_buffer.Marks.TailParams.PointerHeight = 8D;
             this.line_buffer.Marks.TailParams.PointerWidth = 8D;
-            this.line_buffer.OriginalCursor = null;
+            this.line_buffer.OriginalCursor = System.Windows.Forms.Cursors.Default;
             // 
             // 
             // 
