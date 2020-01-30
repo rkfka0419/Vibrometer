@@ -23,16 +23,17 @@ namespace _0128_Vibrometer
     {
         public WaveIn wi;
         public BufferedWaveProvider bwp;
-        //public Buffer Buffer = new Buffer();
+        public WaveInProvider wi_provider;
         //public Int32 envelopeMax;
 
         public BufferedStream bs;
 
-        private int RATE = 44100; // sample rate of the sound card
+        private int SAMPLE_RATE = 44100; // sample rate of the sound card
         private int BUFFERSIZE = (int)Math.Pow(2, 11); // must be a multiple of 2
 
         //;
         public WaveData wv_data;
+        Queue<float> sampleQueue = new Queue<float>();
 
         public Form1()
         {
@@ -40,7 +41,7 @@ namespace _0128_Vibrometer
             
             // Using WaveData class;
             
-            wv_data = new WaveData(RATE);
+            wv_data = new WaveData(SAMPLE_RATE);
 
 
             timer1.Interval = 1000;
@@ -57,35 +58,82 @@ namespace _0128_Vibrometer
             // get the WaveIn class started
             WaveIn wi = new WaveIn();
             wi.DeviceNumber = 0;
-            wi.WaveFormat = new NAudio.Wave.WaveFormat(RATE, 1);
-            wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)RATE * 1000.0);
-            //wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)RATE * 100);
+            wi.WaveFormat = new NAudio.Wave.WaveFormat(SAMPLE_RATE, 1);
+            wi.BufferMilliseconds = (int)((double)BUFFERSIZE / (double)SAMPLE_RATE * 1000.0);
+
+
+            ////Provider without BufferedWaveProvider
+            //bwp = new BufferedWaveProvider(wi.WaveFormat);
+            //bwp.BufferLength = BUFFERSIZE * 2;
+            //bwp.DiscardOnBufferOverflow = true;
+
+
+
 
             // create a wave buffer and start the recording
             wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
 
-
-            bwp = new BufferedWaveProvider(wi.WaveFormat);
-            bwp.BufferLength = BUFFERSIZE * 2;
-            bwp.DiscardOnBufferOverflow = true;
+            wi_provider = new WaveInProvider(wi);
             
+
             wi.StartRecording();
+            Console.WriteLine("녹음 시작");
 
         }
 
+        //private void wi_DataAvailable(object sender, WaveInEventArgs e)
+        //{
+        //    bwp.AddSamples(e.Buffer, 0, e.BytesRecorded);
+        //}
         private void wi_DataAvailable(object sender, WaveInEventArgs e)
         {
-            bwp.AddSamples(e.Buffer, 0, e.BytesRecorded);
-            //Console.WriteLine("e.Buffer = {0},\t e.BytesRecorded = {1}", e.Buffer.Length, e.BytesRecorded);
+            if (wi == null)
+                Console.WriteLine("wi is null");
+                //return;
+            try
+            {
+                //short[] audioData = new short[e.Buffer.Length / 2]; //this is your data! by default is in the short format
+                //Buffer.BlockCopy(e.Buffer, 0, audioData, 0, e.Buffer.Length);
+                //float[] audioFloat = Array.ConvertAll(audioData, x => (float)x); //I typically like to convert it to float for graphical purpose
+                //Do something with audioData (short) or audioFloat (float)          
+                //byte[] data = new byte[e.Buffer.Length / 2]; ;    
+                //wv_data.bata = new byte[e.Buffer.Length] ;
+                Console.WriteLine("wi_DataAvailable loop");
+                foreach (var sample in e.Buffer)
+                    sampleQueue.Enqueue(sample);
+
+                Console.WriteLine("큐 삽입 완료");
+
+                if (sampleQueue.Count > SAMPLE_RATE)
+                {
+                    Console.WriteLine("큐 가득참!");
+                    var wave = new WaveData();
+                    wave.Data = new float[SAMPLE_RATE];
+                    UpdateAudioGraph(wave);
+                    sampleQueue.Clear();
+                }
+                //Buffer.BlockCopy(e.Buffer, 0, wv_data.bData, 0, e.Buffer.Length);
+                //wv_data.Data = Array.ConvertAll(data, x => (float)x);
+            }
+            catch (Exception error)
+            { //if some happens along the way...
+                MessageBox.Show(error.ToString());
+            }
         }
 
-        public void UpdateAudioGraph()
+        public void UpdateAudioGraph(WaveData wv_data)
         {
+            
             //wv_data
             // read the bytes from the stream
             int frameSize = BUFFERSIZE;
             var frames = new byte[frameSize];
-            bwp.Read(frames, 0, frameSize);
+            Console.WriteLine("frameSize = {0}, frames.Length = {1}", frameSize, frames.Length);
+
+            //bwp.Read(frames, 0, frameSize);
+            //wi_provider.Read(wv_data.Data, 0, BUFFERSIZE);
+
+
             if (frames.Length == 0) return;
             if (frames[frameSize - 2] == 0) return;
 
@@ -99,6 +147,11 @@ namespace _0128_Vibrometer
             double[] Xs = new double[frames.Length / BYTES_PER_POINT];
             double[] Ys2 = new double[frames.Length / BYTES_PER_POINT];
             double[] Xs2 = new double[frames.Length / BYTES_PER_POINT];
+            //Int32[] vals = new Int32[wv_data.Data.Length / BYTES_PER_POINT];
+            //double[] Ys = new double[wv_data.Data.Length / BYTES_PER_POINT];
+            //double[] Xs = new double[wv_data.Data.Length / BYTES_PER_POINT];
+            //double[] Ys2 = new double[wv_data.Data.Length / BYTES_PER_POINT];
+            //double[] Xs2 = new double[wv_data.Data.Length / BYTES_PER_POINT];
             for (int i = 0; i < vals.Length; i++)
             {
                 // bit shift the byte buffer into the right variable format
@@ -107,10 +160,12 @@ namespace _0128_Vibrometer
                 vals[i] = (int)(short)((hByte << 8) | lByte);
                 Xs[i] = i;
                 Ys[i] = vals[i];
-                Xs2[i] = (double)i / Ys.Length * RATE / 1000.0; // units are in kHz
+                //Ys[i] = wv_data.Data[i];
+                Xs2[i] = (double)i / Ys.Length * SAMPLE_RATE / 1000.0; // units are in kHz
             }
-            
+
             line_buffer.Add(Ys);
+            //line_buffer.Add(wv_data.Data);
             //tChart1.Refresh();
             Ys2 = FFT(Ys);
             line_fft.Add(Ys2.Take(Ys2.Length / 2).ToArray());
@@ -141,7 +196,7 @@ namespace _0128_Vibrometer
 
         private void StartBtn_Click(object sender, EventArgs e)
         { // read the bytes from the stream
-            UpdateAudioGraph();
+            //UpdateAudioGraph();
             timer1.Enabled = true;
         }
 
@@ -151,31 +206,33 @@ namespace _0128_Vibrometer
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("line_buffer Length = {0}", line_buffer.Count);
-            line_buffer.Clear();
-            Console.WriteLine("line_fft Length = {0}", line_fft.Count);
-            line_fft.Clear();
-            UpdateAudioGraph();
+            Console.WriteLine("Timer tick");
+            //Console.WriteLine("line_buffer Length = {0}", line_buffer.Count);
+            //Console.WriteLine("line_fft Length = {0}", line_fft.Count);
+            //line_buffer.Clear();
+            //line_fft.Clear();
+            //UpdateAudioGraph();
         }
     }
 
 
     public class WaveData
     {
-        private int samplerate = 0;
-        private float[] Data;
+        int samplerate = 0;
+        //float[] Data;
+        public float[] Data { get; set; }
+        //public byte[] Data { get; set; }
 
         public WaveData()
         {
-            this.Data = new float[samplerate];
+            this.samplerate = 44100;
         }
 
         public WaveData(int sample_rate)
         {
-            this.Data = new float[sample_rate];
+            this.samplerate = sample_rate;
         }
 
-        public int BufferLength { get; set; }
         public WaveFormat WaveFormat
         {
             get { return WaveFormat; }
