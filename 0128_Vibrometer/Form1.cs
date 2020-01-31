@@ -19,7 +19,7 @@ namespace _0128_Vibrometer
 {
     public partial class Form1 : Form
     {
-        private int SAMPLE_RATE = (int)(Math.Pow(2, 12)); // sample rate of the sound card
+        private int SAMPLE_RATE = (int)(Math.Pow(2, 13)); // sample rate of the sound card
 
         Queue<float> sampleQueue = new Queue<float>();
 
@@ -52,9 +52,6 @@ namespace _0128_Vibrometer
         {
             try
             {
-                //foreach (var sample in e.Buffer)
-                //    sampleQueue.Enqueue(sample);
-
                 for (int i = 0; i < e.BytesRecorded; i += 2)
                 {
                     Int16 val = BitConverter.ToInt16(e.Buffer, i);
@@ -62,7 +59,6 @@ namespace _0128_Vibrometer
                     //sampleQueue.Enqueue((float) ((double)(val) / Math.Pow(2, 16) * 200.0));
                     sampleQueue.Enqueue((float)(double)(val));
                 }
-
 
                 if (sampleQueue.Count > SAMPLE_RATE)
                 {
@@ -89,28 +85,28 @@ namespace _0128_Vibrometer
                   System.DateTime.Now.TimeOfDay.Minutes.ToString() + ":"
                 + System.DateTime.Now.TimeOfDay.Seconds.ToString()
                 + "\tUpdataChart");
+
+            //Draw wave Graph
             line_buffer.Clear();
-            line_fft.Clear();
             line_buffer.Add(wave.Data);
-            line_fft.Add(FFT(wave.Data));
+
+            //Draw FFT Graph
+            line_fft.Clear();
+            line_fft.Add(WaveData.FFT(wave.Data));
+
+            //Draw Peak to Peak Graph
+
+            float rms = wave.GetRMS(wave.Data);
+            float p2p = wave.GetPeakToPeak(wave.Data);
+            
+            line_rms.Add(rms);
+            line_p2p.Add(p2p);
+            tChart3.Legend.Visible = true;
+            Console.WriteLine("line rms = {0}", rms);
+            
+
         }
 
-        public double[] FFT(float[] data)
-        {
-            double[] fft = new double[data.Length]; // this is where we will store the output (fft)
-            Complex[] fftComplex = new Complex[data.Length]; // the FFT function requires complex format
-            for (int i = 0; i < data.Length; i++)
-            {
-                fftComplex[i] = new Complex(data[i], 0.0); // make it complex format (imaginary = 0)
-            }
-            Accord.Math.FourierTransform.FFT(fftComplex, Accord.Math.FourierTransform.Direction.Forward);
-            for (int i = 0; i < data.Length; i++)
-            {
-                fft[i] = fftComplex[i].Magnitude; // back to double
-                //fft[i] = Math.Log10(fft[i]); // convert to dB
-            }
-            return fft;
-        }
 
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -118,7 +114,6 @@ namespace _0128_Vibrometer
             Console.WriteLine("녹음 시작");
             timer1.Enabled = true;
         }
-
         private void StopBtn_Click(object sender, EventArgs e)
         {
             Console.WriteLine("녹음 중지");
@@ -128,6 +123,11 @@ namespace _0128_Vibrometer
         {
             tChart1.Invalidate();
             tChart2.Invalidate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tChart3.ShowEditor();
         }
     }
 }
