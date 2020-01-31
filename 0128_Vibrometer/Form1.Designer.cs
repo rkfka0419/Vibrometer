@@ -3532,6 +3532,7 @@
             // 
             // 
             // 
+            this.tChart3.Legend.Alignment = Steema.TeeChart.LegendAlignments.Bottom;
             // 
             // 
             // 
