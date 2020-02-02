@@ -1403,7 +1403,12 @@
             // 
             // 
             // 
+            this.line_buffer.XValues.DataMember = "X";
             this.line_buffer.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
+            // 
+            // 
+            this.line_buffer.YValues.DataMember = "Y";
             // 
             // panel1
             // 
@@ -2761,7 +2766,12 @@
             // 
             // 
             // 
+            this.line_fft.XValues.DataMember = "X";
             this.line_fft.XValues.Order = Steema.TeeChart.Styles.ValueListOrder.Ascending;
+            // 
+            // 
+            // 
+            this.line_fft.YValues.DataMember = "Y";
             // 
             // tChart3
             // 
@@ -4508,6 +4518,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -4522,7 +4533,6 @@
         private Steema.TeeChart.TChart tChart1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Timer timer1;
         private Steema.TeeChart.TChart tChart2;
         private Steema.TeeChart.TChart tChart3;
         private Steema.TeeChart.Styles.Line line_p2p;
@@ -4532,6 +4542,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Steema.TeeChart.Styles.Line line_buffer;
         private Steema.TeeChart.Styles.Line line_fft;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
