@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-using System.Numerics;
-
-
-
 namespace _0128_Vibrometer
 {
     public partial class Form1 : Form
     {
         MicControll micControll;
-        ChartContoll lineDrawer;
-
+        LineDraw lineDrawWave;
+        LineDraw lineDrawFFT;
+        LineDraw lineDrawRMS;
+        LineDraw lineDrawP2P;
+        List<LineDraw> lineRMSList = new List<LineDraw>();
+        static int _rmsCount = 10;
 
         public Form1()
         {
@@ -28,13 +28,43 @@ namespace _0128_Vibrometer
 
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
-            lineDrawer = new ChartContoll();
             micControll = new MicControll();
             micControll.StartRecording();
-            micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
+
+            lineDrawWave = new LineDraw(lineWave);
+            lineDrawFFT = new LineDraw(lineFFT);
+            lineDrawRMS = new LineDraw(lineRMS);
+            lineDrawP2P = new LineDraw(lineP2P);
+
+            Steema.TeeChart.Styles.Line[] lines = new Steema.TeeChart.Styles.Line[_rmsCount];
+            LineDraw[] lclc = new LineDraw[_rmsCount];
+            for (int i = 0; i < _rmsCount; i++)
+            {
+                //lines[i] = new Steema.TeeChart.Styles.Line();
+                //tChart3.Series.Add(lines[i]);
+                //lclc[i] = new LineControll(lines[i]);
+                //lineRMSList.Add(lclc[i]);
+
+                //lins
+                //Steema.TeeChart.Styles.Line line = new Steema.TeeChart.Styles.Line();
+                //tChart3.Series.Add(line);
+                //lclc[i] = new LineControll(line);
+                //lineRMSList.Add(lclc[i]);
+
+                lineRMSList.Add(new LineDraw(new Steema.TeeChart.Styles.Line()));
+
+
+
+            }
+
+
+
+            // 방법 2 --- 안됨
+            //lineRMSList.Add(new LineControll(new Steema.TeeChart.Styles.Line()));
+
+
             //리시버를 보고있음
-
-
+            micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
             //tChart1.Axes.Left.Automatic = false;
             //tChart1.Axes.Left.Maximum = 45000;
             //tChart1.Axes.Left.Minimum = -45000;
@@ -67,20 +97,30 @@ namespace _0128_Vibrometer
         }
         private void micControll_OnReceivedWaveData(WaveData wave)
         {
-            ChartContoll.Logging("micControll_OnReceivedWaveData : ");
+            //LineControll.Logging("micControll_OnReceivedWaveData : ");
 
-            //lineDrawer.DrawLine(line_buffer, wave, true);
-            //lineDrawer.DrawLine(line_fft, WaveData.FFT(wave), true);
-            //lineDrawer.DrawLine(line_p2p, wave.GetPeakToPeak(wave));
-            //lineDrawer.DrawLine(line_rms, wave.GetRMS(wave));
+            lineDrawWave.DrawLine(wave, true);
 
-            ChartContoll line_buffer_controll = new ChartContoll(line_buffer);
-            line_buffer_controll.DrawLine(line_buffer, wave, true);
+            FFT fft = new FFT(wave); // 단순 계산 클래스는 static으로 인스턴스화 없이 사용해야 할지?
+            lineDrawFFT.DrawLine(fft.GetFFT(), true);
 
+            //Peak peak = new Peak(wave);
+            //lineDrawP2P.DrawLine(peak.GetPeakToPeak());
 
+            RMS rms = new RMS(fft.GetFFT());
+            lineDrawRMS.DrawLine(rms.GetRMS());
+
+            int waveLength = wave.Data.Length / 2;
+            int bandStep = waveLength / _rmsCount;
+            int start = 0;
+            foreach (var eachRMSLine in lineRMSList)
+            {
+                float bandedRMS = rms.GetRMS(start, start + bandStep);
+                tChart3.Series.Add(eachRMSLine.GetLine());
+                eachRMSLine.DrawLine(bandedRMS);
+                start += bandStep;
+            }
         }
-
- 
     }
 }
     
