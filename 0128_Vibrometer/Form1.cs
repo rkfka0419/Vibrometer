@@ -16,58 +16,42 @@ namespace _0128_Vibrometer
         MicControll micControll;
         LineDraw lineDrawWave;
         LineDraw lineDrawFFT;
-        LineDraw lineDrawRMS;
-        LineDraw lineDrawP2P;
-        List<LineDraw> lineRMSList = new List<LineDraw>();
-        static int _rmsCount = 10;
+        string[] configfile =
+            {
+                "RMS rms",
+                "RMS_10~400 rms 10-400",
+                "RMS_400~1000 rms 400-1000",
+                "RMS_1000~4000 rms 1000-4000",
+                "Peak1 peak",
+                "UpperPeak upperPeak",
+                "LowerPeak lowerPeak",
+                "random random"
+            };
+
+
+        //사용자에게 입력 받을 LineDraw 클래스 리스트
+        List<LineDraw> lineListFromConf = new List<LineDraw>();
 
         public Form1()
         {
             InitializeComponent();
-
-
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
+
             micControll = new MicControll();
             micControll.StartRecording();
 
             lineDrawWave = new LineDraw(lineWave);
             lineDrawFFT = new LineDraw(lineFFT);
-            lineDrawRMS = new LineDraw(lineRMS);
-            lineDrawP2P = new LineDraw(lineP2P);
 
-            Steema.TeeChart.Styles.Line[] lines = new Steema.TeeChart.Styles.Line[_rmsCount];
-            LineDraw[] lclc = new LineDraw[_rmsCount];
-            for (int i = 0; i < _rmsCount; i++)
+            for(int i=0; i<configfile.Length; i++)
             {
-                //lines[i] = new Steema.TeeChart.Styles.Line();
-                //tChart3.Series.Add(lines[i]);
-                //lclc[i] = new LineControll(lines[i]);
-                //lineRMSList.Add(lclc[i]);
-
-                //lins
-                //Steema.TeeChart.Styles.Line line = new Steema.TeeChart.Styles.Line();
-                //tChart3.Series.Add(line);
-                //lclc[i] = new LineControll(line);
-                //lineRMSList.Add(lclc[i]);
-
-                lineRMSList.Add(new LineDraw(new Steema.TeeChart.Styles.Line()));
-
-
-
+                lineListFromConf.Add(new LineDraw(tChart3, new Steema.TeeChart.Styles.Line()));
             }
-
-
-
-            // 방법 2 --- 안됨
-            //lineRMSList.Add(new LineControll(new Steema.TeeChart.Styles.Line()));
-
 
             //리시버를 보고있음
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
-            //tChart1.Axes.Left.Automatic = false;
-            //tChart1.Axes.Left.Maximum = 45000;
-            //tChart1.Axes.Left.Minimum = -45000;
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -90,37 +74,30 @@ namespace _0128_Vibrometer
         //    //tChart1.Invalidate();
         //    //tChart2.Invalidate();
         //}
-
         private void button1_Click(object sender, EventArgs e)
         {
             tChart3.ShowEditor();
         }
+
         private void micControll_OnReceivedWaveData(WaveData wave)
         {
-            //LineControll.Logging("micControll_OnReceivedWaveData : ");
-
+            //Draw Wave
             lineDrawWave.DrawLine(wave, true);
 
-            FFT fft = new FFT(wave); // 단순 계산 클래스는 static으로 인스턴스화 없이 사용해야 할지?
-            lineDrawFFT.DrawLine(fft.GetFFT(), true);
+            //Draw FFT wave
+            lineDrawFFT.DrawLine(FFTCalculator.GetFFT(wave), true);
 
-            //Peak peak = new Peak(wave);
-            //lineDrawP2P.DrawLine(peak.GetPeakToPeak());
+            //미리 준비된 문자열로 선택하기
 
-            RMS rms = new RMS(fft.GetFFT());
-            lineDrawRMS.DrawLine(rms.GetRMS());
-
-            int waveLength = wave.Data.Length / 2;
-            int bandStep = waveLength / _rmsCount;
-            int start = 0;
-            foreach (var eachRMSLine in lineRMSList)
+            int i = 0;
+            foreach(var item in lineListFromConf)
             {
-                float bandedRMS = rms.GetRMS(start, start + bandStep);
-                tChart3.Series.Add(eachRMSLine.GetLine());
-                eachRMSLine.DrawLine(bandedRMS);
-                start += bandStep;
+                TrendGenerator.DrawLineByTrendType(item, configfile[i], wave);
+                i++;
             }
+
         }
     }
 }
-    
+
+     

@@ -2777,6 +2777,10 @@
             // 
             // 
             // 
+            this.tChart3.Aspect.ColorPaletteIndex = -1;
+            // 
+            // 
+            // 
             // 
             // 
             // 
@@ -2800,7 +2804,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Bottom.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.Bottom.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.Bottom.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.Bottom.Labels.Font.Brush.Visible = true;
             // 
@@ -2812,8 +2816,8 @@
             this.tChart3.Axes.Bottom.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Bottom.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Bottom.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Bottom.Labels.Font.Size = 9;
-            this.tChart3.Axes.Bottom.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.Bottom.Labels.Font.Size = 8;
+            this.tChart3.Axes.Bottom.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -2853,7 +2857,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Bottom.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.Bottom.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.Bottom.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.Bottom.Title.Font.Brush.Visible = true;
             // 
@@ -2865,8 +2869,8 @@
             this.tChart3.Axes.Bottom.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Bottom.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Bottom.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Bottom.Title.Font.Size = 11;
-            this.tChart3.Axes.Bottom.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.Bottom.Title.Font.Size = 8;
+            this.tChart3.Axes.Bottom.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -2908,7 +2912,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Depth.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.Depth.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.Depth.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.Depth.Labels.Font.Brush.Visible = true;
             // 
@@ -2920,8 +2924,8 @@
             this.tChart3.Axes.Depth.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Depth.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Depth.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Depth.Labels.Font.Size = 9;
-            this.tChart3.Axes.Depth.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.Depth.Labels.Font.Size = 8;
+            this.tChart3.Axes.Depth.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -2961,7 +2965,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Depth.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.Depth.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.Depth.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.Depth.Title.Font.Brush.Visible = true;
             // 
@@ -2973,8 +2977,8 @@
             this.tChart3.Axes.Depth.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Depth.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Depth.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Depth.Title.Font.Size = 11;
-            this.tChart3.Axes.Depth.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.Depth.Title.Font.Size = 8;
+            this.tChart3.Axes.Depth.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3016,7 +3020,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.DepthTop.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.DepthTop.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.DepthTop.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.DepthTop.Labels.Font.Brush.Visible = true;
             // 
@@ -3028,8 +3032,8 @@
             this.tChart3.Axes.DepthTop.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.DepthTop.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.DepthTop.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.DepthTop.Labels.Font.Size = 9;
-            this.tChart3.Axes.DepthTop.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.DepthTop.Labels.Font.Size = 8;
+            this.tChart3.Axes.DepthTop.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3069,7 +3073,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.DepthTop.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.DepthTop.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.DepthTop.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.DepthTop.Title.Font.Brush.Visible = true;
             // 
@@ -3081,8 +3085,8 @@
             this.tChart3.Axes.DepthTop.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.DepthTop.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.DepthTop.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.DepthTop.Title.Font.Size = 11;
-            this.tChart3.Axes.DepthTop.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.DepthTop.Title.Font.Size = 8;
+            this.tChart3.Axes.DepthTop.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3107,6 +3111,10 @@
             // 
             // 
             // 
+            this.tChart3.Axes.Left.Grid.Visible = false;
+            // 
+            // 
+            // 
             // 
             // 
             // 
@@ -3124,7 +3132,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Left.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.Left.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.Left.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.Left.Labels.Font.Brush.Visible = true;
             // 
@@ -3136,8 +3144,8 @@
             this.tChart3.Axes.Left.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Left.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Left.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Left.Labels.Font.Size = 9;
-            this.tChart3.Axes.Left.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.Left.Labels.Font.Size = 8;
+            this.tChart3.Axes.Left.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3170,7 +3178,7 @@
             this.tChart3.Axes.Left.Title.Brush.Color = System.Drawing.Color.Silver;
             this.tChart3.Axes.Left.Title.Brush.Solid = true;
             this.tChart3.Axes.Left.Title.Brush.Visible = true;
-            this.tChart3.Axes.Left.Title.Caption = "p2p";
+            this.tChart3.Axes.Left.Title.Caption = "Lms";
             // 
             // 
             // 
@@ -3178,7 +3186,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Left.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.Left.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.Left.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.Left.Title.Font.Brush.Visible = true;
             // 
@@ -3190,8 +3198,8 @@
             this.tChart3.Axes.Left.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Left.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Left.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Left.Title.Font.Size = 11;
-            this.tChart3.Axes.Left.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.Left.Title.Font.Size = 8;
+            this.tChart3.Axes.Left.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3202,7 +3210,7 @@
             this.tChart3.Axes.Left.Title.ImageBevel.Brush.Solid = true;
             this.tChart3.Axes.Left.Title.ImageBevel.Brush.Visible = true;
             this.tChart3.Axes.Left.Title.Lines = new string[] {
-        "p2p"};
+        "Lms"};
             // 
             // 
             // 
@@ -3215,6 +3223,10 @@
             // 
             // 
             // 
+            // 
+            // 
+            // 
+            this.tChart3.Axes.Right.Grid.Visible = false;
             // 
             // 
             // 
@@ -3235,7 +3247,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Right.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.Right.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.Right.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.Right.Labels.Font.Brush.Visible = true;
             // 
@@ -3247,8 +3259,8 @@
             this.tChart3.Axes.Right.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Right.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Right.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Right.Labels.Font.Size = 9;
-            this.tChart3.Axes.Right.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.Right.Labels.Font.Size = 8;
+            this.tChart3.Axes.Right.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3281,7 +3293,7 @@
             this.tChart3.Axes.Right.Title.Brush.Color = System.Drawing.Color.Silver;
             this.tChart3.Axes.Right.Title.Brush.Solid = true;
             this.tChart3.Axes.Right.Title.Brush.Visible = true;
-            this.tChart3.Axes.Right.Title.Caption = "RMS";
+            this.tChart3.Axes.Right.Title.Caption = "Peak";
             // 
             // 
             // 
@@ -3289,7 +3301,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Right.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.Right.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.Right.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.Right.Title.Font.Brush.Visible = true;
             // 
@@ -3301,8 +3313,8 @@
             this.tChart3.Axes.Right.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Right.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Right.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Right.Title.Font.Size = 11;
-            this.tChart3.Axes.Right.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.Right.Title.Font.Size = 8;
+            this.tChart3.Axes.Right.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3313,7 +3325,7 @@
             this.tChart3.Axes.Right.Title.ImageBevel.Brush.Solid = true;
             this.tChart3.Axes.Right.Title.ImageBevel.Brush.Visible = true;
             this.tChart3.Axes.Right.Title.Lines = new string[] {
-        "RMS"};
+        "Peak"};
             // 
             // 
             // 
@@ -3346,7 +3358,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Top.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Axes.Top.Labels.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Axes.Top.Labels.Font.Brush.Solid = true;
             this.tChart3.Axes.Top.Labels.Font.Brush.Visible = true;
             // 
@@ -3358,8 +3370,8 @@
             this.tChart3.Axes.Top.Labels.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Top.Labels.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Top.Labels.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Top.Labels.Font.Size = 9;
-            this.tChart3.Axes.Top.Labels.Font.SizeFloat = 9F;
+            this.tChart3.Axes.Top.Labels.Font.Size = 8;
+            this.tChart3.Axes.Top.Labels.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3399,7 +3411,7 @@
             // 
             // 
             // 
-            this.tChart3.Axes.Top.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Axes.Top.Title.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Axes.Top.Title.Font.Brush.Solid = true;
             this.tChart3.Axes.Top.Title.Font.Brush.Visible = true;
             // 
@@ -3411,8 +3423,8 @@
             this.tChart3.Axes.Top.Title.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Axes.Top.Title.Font.Shadow.Brush.Solid = true;
             this.tChart3.Axes.Top.Title.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Axes.Top.Title.Font.Size = 11;
-            this.tChart3.Axes.Top.Title.Font.SizeFloat = 11F;
+            this.tChart3.Axes.Top.Title.Font.Size = 8;
+            this.tChart3.Axes.Top.Title.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3496,6 +3508,14 @@
             // 
             // 
             this.tChart3.Header.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            // 
+            // 
+            // 
+            this.tChart3.Header.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.tChart3.Header.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Header.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Header.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Header.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Header.Brush.Solid = true;
             this.tChart3.Header.Brush.Visible = true;
             // 
@@ -3505,7 +3525,7 @@
             // 
             // 
             // 
-            this.tChart3.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.tChart3.Header.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Header.Font.Brush.Solid = true;
             this.tChart3.Header.Font.Brush.Visible = true;
             // 
@@ -3517,8 +3537,8 @@
             this.tChart3.Header.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Header.Font.Shadow.Brush.Solid = true;
             this.tChart3.Header.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Header.Font.Size = 12;
-            this.tChart3.Header.Font.SizeFloat = 12F;
+            this.tChart3.Header.Font.Size = 8;
+            this.tChart3.Header.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3539,6 +3559,8 @@
             this.tChart3.Header.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.tChart3.Header.Shadow.Brush.Solid = true;
             this.tChart3.Header.Shadow.Brush.Visible = true;
+            this.tChart3.Header.Shadow.Height = 0;
+            this.tChart3.Header.Shadow.Width = 0;
             // 
             // 
             // 
@@ -3551,6 +3573,15 @@
             // 
             // 
             this.tChart3.Legend.Brush.Color = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.tChart3.Legend.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.tChart3.Legend.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Legend.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Legend.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Legend.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.tChart3.Legend.Brush.Gradient.Visible = true;
             this.tChart3.Legend.Brush.Solid = true;
             this.tChart3.Legend.Brush.Visible = true;
             // 
@@ -3560,7 +3591,7 @@
             // 
             // 
             // 
-            this.tChart3.Legend.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tChart3.Legend.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Legend.Font.Brush.Solid = true;
             this.tChart3.Legend.Font.Brush.Visible = true;
             // 
@@ -3572,8 +3603,8 @@
             this.tChart3.Legend.Font.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Legend.Font.Shadow.Brush.Solid = true;
             this.tChart3.Legend.Font.Shadow.Brush.Visible = true;
-            this.tChart3.Legend.Font.Size = 9;
-            this.tChart3.Legend.Font.SizeFloat = 9F;
+            this.tChart3.Legend.Font.Size = 8;
+            this.tChart3.Legend.Font.SizeFloat = 8F;
             // 
             // 
             // 
@@ -3593,6 +3624,7 @@
             this.tChart3.Legend.Shadow.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tChart3.Legend.Shadow.Brush.Solid = true;
             this.tChart3.Legend.Shadow.Brush.Visible = true;
+            this.tChart3.Legend.Shadow.Width = 0;
             // 
             // 
             // 
@@ -3668,11 +3700,21 @@
             // 
             // 
             // 
-            this.tChart3.Panel.Bevel.Outer = Steema.TeeChart.Drawing.BevelStyles.None;
+            this.tChart3.Panel.Bevel.Outer = Steema.TeeChart.Drawing.BevelStyles.Raised;
             // 
             // 
             // 
-            this.tChart3.Panel.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tChart3.Panel.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            // 
+            // 
+            // 
+            this.tChart3.Panel.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.tChart3.Panel.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Panel.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Panel.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Panel.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.tChart3.Panel.Brush.Gradient.UseMiddle = false;
+            this.tChart3.Panel.Brush.Gradient.Visible = true;
             this.tChart3.Panel.Brush.Solid = true;
             this.tChart3.Panel.Brush.Visible = true;
             // 
@@ -3816,6 +3858,12 @@
             // 
             // 
             this.tChart3.Walls.Back.Brush.Color = System.Drawing.Color.Silver;
+            // 
+            // 
+            // 
+            this.tChart3.Walls.Back.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.tChart3.Walls.Back.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Back.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.tChart3.Walls.Back.Brush.Solid = true;
             this.tChart3.Walls.Back.Brush.Visible = false;
             // 
@@ -3847,6 +3895,14 @@
             // 
             // 
             this.tChart3.Walls.Bottom.Brush.Color = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.tChart3.Walls.Bottom.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Bottom.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Bottom.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Walls.Bottom.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Walls.Bottom.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Walls.Bottom.Brush.Solid = true;
             this.tChart3.Walls.Bottom.Brush.Visible = true;
             // 
@@ -3867,6 +3923,7 @@
             this.tChart3.Walls.Bottom.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Walls.Bottom.Shadow.Brush.Solid = true;
             this.tChart3.Walls.Bottom.Shadow.Brush.Visible = true;
+            this.tChart3.Walls.Bottom.Visible = false;
             // 
             // 
             // 
@@ -3878,6 +3935,14 @@
             // 
             // 
             this.tChart3.Walls.Left.Brush.Color = System.Drawing.Color.LightYellow;
+            // 
+            // 
+            // 
+            this.tChart3.Walls.Left.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Left.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Left.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Walls.Left.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Walls.Left.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Walls.Left.Brush.Solid = true;
             this.tChart3.Walls.Left.Brush.Visible = true;
             // 
@@ -3898,6 +3963,7 @@
             this.tChart3.Walls.Left.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart3.Walls.Left.Shadow.Brush.Solid = true;
             this.tChart3.Walls.Left.Shadow.Brush.Visible = true;
+            this.tChart3.Walls.Left.Visible = false;
             // 
             // 
             // 
@@ -3908,7 +3974,15 @@
             // 
             // 
             // 
-            this.tChart3.Walls.Right.Brush.Color = System.Drawing.Color.LightYellow;
+            this.tChart3.Walls.Right.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            // 
+            // 
+            // 
+            this.tChart3.Walls.Right.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Right.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tChart3.Walls.Right.Brush.Gradient.SigmaFocus = 0F;
+            this.tChart3.Walls.Right.Brush.Gradient.SigmaScale = 0F;
+            this.tChart3.Walls.Right.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tChart3.Walls.Right.Brush.Solid = true;
             this.tChart3.Walls.Right.Brush.Visible = true;
             // 
@@ -3944,10 +4018,16 @@
             // 
             // 
             // 
-            this.lineP2P.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lineP2P.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
+            // 
+            // 
+            // 
+            this.lineP2P.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
+            this.lineP2P.Brush.Gradient.MiddleColor = System.Drawing.Color.Empty;
+            this.lineP2P.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineP2P.Brush.Solid = true;
             this.lineP2P.Brush.Visible = true;
-            this.lineP2P.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lineP2P.Color = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineP2P.ColorEach = false;
             // 
             // 
@@ -4004,7 +4084,7 @@
             // 
             // 
             // 
-            this.lineP2P.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(92)))), ((int)(((byte)(128)))));
+            this.lineP2P.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(90)))), ((int)(((byte)(132)))));
             // 
             // 
             // 
@@ -4015,9 +4095,17 @@
             // 
             // 
             // 
-            this.lineP2P.Marks.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lineP2P.Marks.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(224)))));
+            // 
+            // 
+            // 
+            this.lineP2P.Marks.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.lineP2P.Marks.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lineP2P.Marks.Brush.Gradient.SigmaFocus = 0F;
+            this.lineP2P.Marks.Brush.Gradient.SigmaScale = 0F;
+            this.lineP2P.Marks.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lineP2P.Marks.Brush.Solid = true;
-            this.lineP2P.Marks.Brush.Visible = true;
+            this.lineP2P.Marks.Brush.Visible = false;
             // 
             // 
             // 
@@ -4025,7 +4113,7 @@
             // 
             // 
             // 
-            this.lineP2P.Marks.Font.Brush.Color = System.Drawing.Color.Black;
+            this.lineP2P.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lineP2P.Marks.Font.Brush.Solid = true;
             this.lineP2P.Marks.Font.Brush.Visible = true;
             // 
@@ -4051,12 +4139,18 @@
             // 
             // 
             // 
+            this.lineP2P.Marks.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(207)))), ((int)(((byte)(81)))));
+            // 
+            // 
+            // 
             // 
             // 
             // 
             this.lineP2P.Marks.Shadow.Brush.Color = System.Drawing.Color.Gray;
             this.lineP2P.Marks.Shadow.Brush.Solid = true;
             this.lineP2P.Marks.Shadow.Brush.Visible = true;
+            this.lineP2P.Marks.Shadow.Height = 1;
+            this.lineP2P.Marks.Shadow.Width = 1;
             // 
             // 
             // 
@@ -4096,18 +4190,27 @@
             this.lineP2P.Marks.TailParams.Margin = 0F;
             this.lineP2P.Marks.TailParams.PointerHeight = 8D;
             this.lineP2P.Marks.TailParams.PointerWidth = 8D;
+            this.lineP2P.Marks.TailStyle = Steema.TeeChart.Styles.MarksTail.None;
+            this.lineP2P.Marks.Transparent = true;
             this.lineP2P.OriginalCursor = System.Windows.Forms.Cursors.Default;
             // 
             // 
             // 
+            this.lineP2P.OutLine.Color = System.Drawing.Color.Black;
+            this.lineP2P.OutLine.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.lineP2P.OutLine.Visible = false;
             // 
             // 
             // 
-            this.lineP2P.Pointer.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(153)))), ((int)(((byte)(214)))));
+            // 
+            // 
+            // 
+            this.lineP2P.Pointer.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineP2P.Pointer.Brush.Solid = true;
             this.lineP2P.Pointer.Brush.Visible = true;
             this.lineP2P.Pointer.SizeDouble = 0D;
             this.lineP2P.Pointer.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
+            this.lineP2P.Pointer.Visible = false;
             this.lineP2P.Title = "P2P";
             this.lineP2P.UseExtendedNumRange = false;
             // 
@@ -4125,10 +4228,16 @@
             // 
             // 
             // 
-            this.lineRMS.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.lineRMS.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(150)))), ((int)(((byte)(220)))));
+            // 
+            // 
+            // 
+            this.lineRMS.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
+            this.lineRMS.Brush.Gradient.MiddleColor = System.Drawing.Color.Empty;
+            this.lineRMS.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineRMS.Brush.Solid = true;
             this.lineRMS.Brush.Visible = true;
-            this.lineRMS.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.lineRMS.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(150)))), ((int)(((byte)(220)))));
             this.lineRMS.ColorEach = false;
             // 
             // 
@@ -4185,7 +4294,7 @@
             // 
             // 
             // 
-            this.lineRMS.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(124)))), ((int)(((byte)(62)))));
+            this.lineRMS.LinePen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(90)))), ((int)(((byte)(132)))));
             // 
             // 
             // 
@@ -4196,9 +4305,17 @@
             // 
             // 
             // 
-            this.lineRMS.Marks.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lineRMS.Marks.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(224)))));
+            // 
+            // 
+            // 
+            this.lineRMS.Marks.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.lineRMS.Marks.Brush.Gradient.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lineRMS.Marks.Brush.Gradient.SigmaFocus = 0F;
+            this.lineRMS.Marks.Brush.Gradient.SigmaScale = 0F;
+            this.lineRMS.Marks.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lineRMS.Marks.Brush.Solid = true;
-            this.lineRMS.Marks.Brush.Visible = true;
+            this.lineRMS.Marks.Brush.Visible = false;
             // 
             // 
             // 
@@ -4206,7 +4323,7 @@
             // 
             // 
             // 
-            this.lineRMS.Marks.Font.Brush.Color = System.Drawing.Color.Black;
+            this.lineRMS.Marks.Font.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lineRMS.Marks.Font.Brush.Solid = true;
             this.lineRMS.Marks.Font.Brush.Visible = true;
             // 
@@ -4232,12 +4349,18 @@
             // 
             // 
             // 
+            this.lineRMS.Marks.Pen.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(207)))), ((int)(((byte)(81)))));
+            // 
+            // 
+            // 
             // 
             // 
             // 
             this.lineRMS.Marks.Shadow.Brush.Color = System.Drawing.Color.Gray;
             this.lineRMS.Marks.Shadow.Brush.Solid = true;
             this.lineRMS.Marks.Shadow.Brush.Visible = true;
+            this.lineRMS.Marks.Shadow.Height = 1;
+            this.lineRMS.Marks.Shadow.Width = 1;
             // 
             // 
             // 
@@ -4277,21 +4400,29 @@
             this.lineRMS.Marks.TailParams.Margin = 0F;
             this.lineRMS.Marks.TailParams.PointerHeight = 8D;
             this.lineRMS.Marks.TailParams.PointerWidth = 8D;
+            this.lineRMS.Marks.TailStyle = Steema.TeeChart.Styles.MarksTail.None;
+            this.lineRMS.Marks.Transparent = true;
             this.lineRMS.OriginalCursor = System.Windows.Forms.Cursors.Default;
             // 
             // 
             // 
+            this.lineRMS.OutLine.Color = System.Drawing.Color.Black;
+            this.lineRMS.OutLine.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.lineRMS.OutLine.Visible = false;
             // 
             // 
             // 
-            this.lineRMS.Pointer.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(207)))), ((int)(((byte)(104)))));
+            // 
+            // 
+            // 
+            this.lineRMS.Pointer.Brush.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(150)))), ((int)(((byte)(220)))));
             this.lineRMS.Pointer.Brush.Solid = true;
             this.lineRMS.Pointer.Brush.Visible = true;
             this.lineRMS.Pointer.SizeDouble = 0D;
             this.lineRMS.Pointer.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
+            this.lineRMS.Pointer.Visible = false;
             this.lineRMS.Title = "RMS";
             this.lineRMS.UseExtendedNumRange = false;
-            this.lineRMS.VertAxis = Steema.TeeChart.Styles.VerticalAxis.Right;
             // 
             // 
             // 
