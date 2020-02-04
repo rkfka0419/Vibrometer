@@ -4022,9 +4022,9 @@
             // 
             // 
             // 
-            this.lineP2P.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
-            this.lineP2P.Brush.Gradient.MiddleColor = System.Drawing.Color.Empty;
-            this.lineP2P.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
+            this.lineP2P.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
+            this.lineP2P.Gradient.MiddleColor = System.Drawing.Color.Empty;
+            this.lineP2P.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineP2P.Brush.Solid = true;
             this.lineP2P.Brush.Visible = true;
             this.lineP2P.Color = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
@@ -4149,8 +4149,6 @@
             this.lineP2P.Marks.Shadow.Brush.Color = System.Drawing.Color.Gray;
             this.lineP2P.Marks.Shadow.Brush.Solid = true;
             this.lineP2P.Marks.Shadow.Brush.Visible = true;
-            this.lineP2P.Marks.Shadow.Height = 1;
-            this.lineP2P.Marks.Shadow.Width = 1;
             // 
             // 
             // 
@@ -4196,12 +4194,6 @@
             // 
             // 
             // 
-            this.lineP2P.OutLine.Color = System.Drawing.Color.Black;
-            this.lineP2P.OutLine.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            this.lineP2P.OutLine.Visible = false;
-            // 
-            // 
-            // 
             // 
             // 
             // 
@@ -4210,9 +4202,9 @@
             this.lineP2P.Pointer.Brush.Visible = true;
             this.lineP2P.Pointer.SizeDouble = 0D;
             this.lineP2P.Pointer.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
-            this.lineP2P.Pointer.Visible = false;
             this.lineP2P.Title = "P2P";
             this.lineP2P.UseExtendedNumRange = false;
+            this.lineP2P.Visible = false;
             // 
             // 
             // 
@@ -4232,9 +4224,9 @@
             // 
             // 
             // 
-            this.lineRMS.Brush.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
-            this.lineRMS.Brush.Gradient.MiddleColor = System.Drawing.Color.Empty;
-            this.lineRMS.Brush.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
+            this.lineRMS.Gradient.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(245)))), ((int)(((byte)(189)))));
+            this.lineRMS.Gradient.MiddleColor = System.Drawing.Color.Empty;
+            this.lineRMS.Gradient.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(90)))));
             this.lineRMS.Brush.Solid = true;
             this.lineRMS.Brush.Visible = true;
             this.lineRMS.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(150)))), ((int)(((byte)(220)))));
@@ -4359,8 +4351,6 @@
             this.lineRMS.Marks.Shadow.Brush.Color = System.Drawing.Color.Gray;
             this.lineRMS.Marks.Shadow.Brush.Solid = true;
             this.lineRMS.Marks.Shadow.Brush.Visible = true;
-            this.lineRMS.Marks.Shadow.Height = 1;
-            this.lineRMS.Marks.Shadow.Width = 1;
             // 
             // 
             // 
@@ -4406,12 +4396,6 @@
             // 
             // 
             // 
-            this.lineRMS.OutLine.Color = System.Drawing.Color.Black;
-            this.lineRMS.OutLine.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            this.lineRMS.OutLine.Visible = false;
-            // 
-            // 
-            // 
             // 
             // 
             // 
@@ -4420,9 +4404,9 @@
             this.lineRMS.Pointer.Brush.Visible = true;
             this.lineRMS.Pointer.SizeDouble = 0D;
             this.lineRMS.Pointer.SizeUnits = Steema.TeeChart.Styles.PointerSizeUnits.Pixels;
-            this.lineRMS.Pointer.Visible = false;
             this.lineRMS.Title = "RMS";
             this.lineRMS.UseExtendedNumRange = false;
+            this.lineRMS.Visible = false;
             // 
             // 
             // 

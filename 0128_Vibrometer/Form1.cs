@@ -16,21 +16,13 @@ namespace _0128_Vibrometer
         MicControll micControll;
         LineDraw lineDrawWave;
         LineDraw lineDrawFFT;
-        string[] configfile =
-            {
-                "RMS rms",
-                "RMS_10~400 rms 10-400",
-                "RMS_400~1000 rms 400-1000",
-                "RMS_1000~4000 rms 1000-4000",
-                "Peak1 peak",
-                "UpperPeak upperPeak",
-                "LowerPeak lowerPeak",
-                "random random"
-            };
-
+        string[] configfile;
+        const string CONFIG_FILE_PATH = @"config.txt";
 
         //사용자에게 입력 받을 LineDraw 클래스 리스트
-        List<LineDraw> lineListFromConf = new List<LineDraw>();
+        List<LineDraw> lineObjList = new List<LineDraw>();
+        //config파일을 읽어 한줄씩 분리한 후 집어넣을 큐
+        Queue<string[]> configLineQueue = new Queue<string[]>();
 
         public Form1()
         {
@@ -38,20 +30,23 @@ namespace _0128_Vibrometer
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
 
-            micControll = new MicControll();
-            micControll.StartRecording();
-
             lineDrawWave = new LineDraw(lineWave);
             lineDrawFFT = new LineDraw(lineFFT);
 
+            micControll = new MicControll();
+            micControll.StartRecording();
+
+            configfile = System.IO.File.ReadAllLines(CONFIG_FILE_PATH);
+
             for(int i=0; i<configfile.Length; i++)
-            {
-                lineListFromConf.Add(new LineDraw(tChart3, new Steema.TeeChart.Styles.Line()));
+            { // 파일 라인길이만큼 객체생성
+                //configLineQueue.Enqueue(configfile[i].Split(' '));
+                LineDraw lineTempObj = new LineDraw(tChart3, new Steema.TeeChart.Styles.Line());
+                lineTempObj.SetFieldFromConfigLine(configfile[i].Split(' '));
+                lineObjList.Add(lineTempObj);
             }
 
-            //리시버를 보고있음
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -90,10 +85,12 @@ namespace _0128_Vibrometer
             //미리 준비된 문자열로 선택하기
 
             int i = 0;
-            foreach(var item in lineListFromConf)
+            foreach(var line_item in lineObjList)
             {
-                TrendGenerator.DrawLineByTrendType(item, configfile[i], wave);
-                i++;
+                //string[] configLine = configLineQueue[i];
+                //string[] configLine = configfile[i++].Split(' ');
+                //TrendGenerator.DrawLineByTrendType(line_item, configLine, wave);
+                TrendGenerator.DrawLineByTrendType(line_item, wave);
             }
 
         }
