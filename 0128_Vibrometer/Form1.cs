@@ -25,12 +25,10 @@ namespace _0128_Vibrometer
             lineDrawFFT = new TrendDrawer(lineFFT);
 
             configReader = new ConfigReader();
-            configReader.ReadFile(CONFIG_FILE_PATH);
-
-            //config 라인 받아서 한줄씩 파싱
             string[] configFileLines = configReader.GetConfigFileLines();
+
             //list 객체 하나씩 생성 및 푸쉬
-            for(int i=0; i< configFileLines.Length; i++)
+            for (int i=0; i< configFileLines.Length; i++)
             { // 파일 라인길이만큼 객체생성
                 TrendDrawer lineTempObj = new TrendDrawer(tChart3, new Steema.TeeChart.Styles.Line());
                 lineTempObj.ParseLine(configFileLines[i]);
