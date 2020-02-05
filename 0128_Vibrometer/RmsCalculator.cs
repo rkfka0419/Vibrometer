@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 namespace _0128_Vibrometer
 {
     //SpectrumCalculator
-    class RmsCalculator : Trend
+    class RmsCalculator : ITrendCalculator
     {
-
-        public RmsCalculator(float[] data)
+        public TrendData GetTrend(float[] data)
         {
-            this.value = GetRMS(data);
+            TrendData trendData;
+            trendData.Time = DateTime.Now;
+            trendData.Value = GetRMS(data);
+            return trendData;
         }
-        public RmsCalculator(float[] data, int start, int end)
-        {
-            this.value = GetRMS(data, start, end);
-        }
+        
 
         // Get RMS 
         public float GetRMS(float[] data)

@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace _0128_Vibrometer
 {
-    class RandomTrend : Trend
+    class RandomTrend : ITrendCalculator
     {
         
-        public RandomTrend(float[] data)
+        public TrendData GetTrend(float[] data)
         {
-            this.value = GetRandomValue(data);
+            TrendData trendData;
+            trendData.Time = DateTime.Now;
+            trendData.Value = GetRandomValue(data);
+            return trendData;
         }
-
-        //public override void GetValue(float[] data)
-        //{
-        //    this.value = GetRandomValue(data);
-        //}
 
         public float GetRandomValue(float[] data)
         {

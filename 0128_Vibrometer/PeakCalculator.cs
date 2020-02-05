@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace _0128_Vibrometer
 {
     //WaveCalculator
-    class PeakCalculator : Trend
+    class PeakCalculator : ITrendCalculator
     {
-
-        public PeakCalculator(float[] data)
+        public TrendData GetTrend(float[] data)
         {
-            this.value = GetPeakToPeak(data);
+            TrendData trendData;
+            trendData.Time = DateTime.Now;
+            trendData.Value = GetLowerPeak(data);
+            return trendData;
         }
 
         //Get P2P
@@ -27,15 +29,15 @@ namespace _0128_Vibrometer
             return GetPeakToPeak(wave.Data);
         }
         //Get Peak
-        public static float GetUpperPeak(float[] data)
+        public float GetUpperPeak(float[] data)
         {
             return data.Max();
         }
-        public static float GetLowerPeak(float[] data)
+        public float GetLowerPeak(float[] data)
         {
             return data.Min();
         }
-        public static float GetPeak(float[] data)
+        public float GetPeak(float[] data)
         {
             float upperPeakScala = data.Max();
             float lowerPeakScala = Math.Abs(data.Min());
