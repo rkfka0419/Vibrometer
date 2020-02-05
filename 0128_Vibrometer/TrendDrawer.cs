@@ -77,25 +77,16 @@ namespace _0128_Vibrometer
         }
 
         //get field data from single configfile line
-        public void ParseLine(string configLine)
+        public void SetConfiguration(ConfigData configData)
         {
-            ParseLine(configLine.Split(' '));
-        }
-        public void ParseLine(string[] tokens)
-        {
-            this.title = tokens[0];
+
+            this.title = configData.title;
             this.line.Title = this.title;
-            string trendTypeString = tokens[1];
-            this.trendType = (TrendType)Enum.Parse(typeof(TrendType), trendTypeString);
-            if (tokens.Length > 2)
-            {//if range parameter exist;
-                this.rangeIndex[0] = Int32.Parse(tokens[2].Split('-')[0]); //start index
-                this.rangeIndex[1] = Int32.Parse(tokens[2].Split('-')[1]); // end index
-            }
+            this.trendType = configData.trendType;
+            if (configData.optionFlag == true)
+                this.rangeIndex = configData.rangeIndex;
             else
-            {
                 this.rangeIndex = null;
-            }
         }
 
         //라인 그리는 메소드

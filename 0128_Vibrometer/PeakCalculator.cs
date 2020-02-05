@@ -13,7 +13,7 @@ namespace _0128_Vibrometer
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
-            trendData.Value = GetLowerPeak(data);
+            trendData.Value = GetPeakToPeak(data);
             return trendData;
         }
 
@@ -24,7 +24,7 @@ namespace _0128_Vibrometer
             p2p = data.Max() - data.Min();
             return p2p;
         }
-        public static float GetPeakToPeak(WaveData wave)
+        public float GetPeakToPeak(WaveData wave)
         {
             return GetPeakToPeak(wave.Data);
         }

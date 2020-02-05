@@ -14,6 +14,8 @@ namespace _0128_Vibrometer
 
         //파일에서 입력받아 저장할 LineDraw 클래스 리스트
         List<TrendDrawer> lineObjList = new List<TrendDrawer>();
+        List<ConfigData> configQueue = new List<ConfigData>();
+        TrendCalculatorFactory trendCalculatorFactory = new TrendCalculatorFactory();
 
         public Form1()
         {
@@ -25,13 +27,13 @@ namespace _0128_Vibrometer
             lineDrawFFT = new TrendDrawer(lineFFT);
 
             configReader = new ConfigReader();
-            string[] configFileLines = configReader.GetConfigFileLines();
+            configQueue = configReader.ReadFile(CONFIG_FILE_PATH);
 
             //list 객체 하나씩 생성 및 푸쉬
-            for (int i=0; i< configFileLines.Length; i++)
+            foreach (var configItem in configQueue)
             { // 파일 라인길이만큼 객체생성
                 TrendDrawer lineTempObj = new TrendDrawer(tChart3, new Steema.TeeChart.Styles.Line());
-                lineTempObj.ParseLine(configFileLines[i]);
+                lineTempObj.SetConfiguration(configItem);
                 lineObjList.Add(lineTempObj);
             }
 
@@ -73,13 +75,14 @@ namespace _0128_Vibrometer
 
             //Draw FFT wave
             lineDrawFFT.DrawLine(FFTCalculator.GetFFT(wave), true);
-
-            //미리 준비된 문자열로 선택하기
-            foreach(var line_item in lineObjList)
+            
+            foreach (var line_item in lineObjList)
             {
-                TrendGenerator.DrawLineByTrendType(line_item, wave);
+                ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(line_item.GetTrendType());
+                TrendData trendData = trendCalculator.GetTrend(wave.Data);
+                line_item.DrawLine(trendData.Value);
+                Console.WriteLine(trendData.Time);
             }
-
         }
     }
 }
