@@ -68,8 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphFactory.cs" />
     <Compile Include="ReadConfig.cs" />
+    <Compile Include="Trend.cs" />
     <Compile Include="TrendData.cs" />
     <Compile Include="TrendDrawer.cs" />
     <Compile Include="FFTCalculator.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomTrend.cs" />
     <Compile Include="RmsCalculator.cs" />
+    <Compile Include="TrendFactory.cs" />
     <Compile Include="TrendGenerator.cs" />
     <Compile Include="VibrometerDB.designer.cs">
       <AutoGen>True</AutoGen>
