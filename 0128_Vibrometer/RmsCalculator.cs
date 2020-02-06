@@ -16,6 +16,18 @@ namespace _0128_Vibrometer
             trendData.Value = GetRMS(data);
             return trendData;
         }
+        public TrendData GetTrend(float[] data, string option)
+        {
+            TrendData trendData;
+            trendData.Time = DateTime.Now;
+
+            //int[] token = Array.ConvertAll(option.Split('-'), delegate (string s) { return int.Parse(s); });
+            //var token = Array.ConvertAll(option.Split('-'), int.Parse);
+            var token = option.Split('-').Select(int.Parse).ToArray();
+            trendData.Value = GetRMS(data, token[0], token[1]);
+
+            return trendData;
+        }
         
 
         // Get RMS 

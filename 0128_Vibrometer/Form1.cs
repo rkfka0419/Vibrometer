@@ -7,14 +7,14 @@ namespace _0128_Vibrometer
     public partial class Form1 : Form
     {
         MicControll micControll;
-        TrendDrawer lineDrawWave;
-        TrendDrawer lineDrawFFT;
+        LineDrawer lineDrawWave;
+        LineDrawer lineDrawFFT;
         ConfigReader configReader;
         const string CONFIG_FILE_PATH = @"config.txt";
 
         //파일에서 입력받아 저장할 LineDraw 클래스 리스트
-        List<TrendDrawer> lineObjList = new List<TrendDrawer>();
-        List<ConfigData> configQueue = new List<ConfigData>();
+        List<LineDrawer> lineDrawerList = new List<LineDrawer>();
+        List<ConfigData> configList = new List<ConfigData>();
         TrendCalculatorFactory trendCalculatorFactory = new TrendCalculatorFactory();
 
         public Form1()
@@ -23,18 +23,18 @@ namespace _0128_Vibrometer
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
 
-            lineDrawWave = new TrendDrawer(lineWave);
-            lineDrawFFT = new TrendDrawer(lineFFT);
+            lineDrawWave = new LineDrawer(lineWave);
+            lineDrawFFT = new LineDrawer(lineFFT);
 
             configReader = new ConfigReader();
-            configQueue = configReader.ReadFile(CONFIG_FILE_PATH);
+            configList = configReader.ReadFile(CONFIG_FILE_PATH);
 
             //list 객체 하나씩 생성 및 푸쉬
-            foreach (var configItem in configQueue)
+            foreach (var configItem in configList)
             { // 파일 라인길이만큼 객체생성
-                TrendDrawer lineTempObj = new TrendDrawer(tChart3, new Steema.TeeChart.Styles.Line());
+                LineDrawer lineTempObj = new LineDrawer(tChart3, new Steema.TeeChart.Styles.Line());
                 lineTempObj.SetConfiguration(configItem);
-                lineObjList.Add(lineTempObj);
+                lineDrawerList.Add(lineTempObj);
             }
 
             micControll = new MicControll();
@@ -76,13 +76,15 @@ namespace _0128_Vibrometer
             //Draw FFT wave
             lineDrawFFT.DrawLine(FFTCalculator.GetFFT(wave), true);
             
-            foreach (var line_item in lineObjList)
+            foreach (var lineDrawerItem in lineDrawerList)
             {
-                ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(line_item.GetTrendType());
+                ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(lineDrawerItem.GetTrendType());
+                //lineDrawerItem. 트렌드값이 계산되기 전에 옵션 메뉴가 반영되어야 함
                 TrendData trendData = trendCalculator.GetTrend(wave.Data);
-                line_item.DrawLine(trendData.Value);
+                lineDrawerItem.DrawLine(trendData.Value);
                 Console.WriteLine(trendData.Time);
             }
+
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _0128_Vibrometer
 {
@@ -16,6 +13,31 @@ namespace _0128_Vibrometer
             trendData.Value = GetPeakToPeak(data);
             return trendData;
         }
+        public TrendData GetTrend(float[] data, string option)
+        {
+            TrendData trendData;
+            trendData.Time = DateTime.Now;
+            switch (option)
+            {
+                case "p2p":
+                    trendData.Value = GetPeakToPeak(data);
+                    break;
+                case "upper":
+                    trendData.Value = GetUpperPeak(data);
+                    break;
+                case "lower":
+                    trendData.Value = GetLowerPeak(data);
+                    break;
+                case "peak":
+                    trendData.Value = GetPeak(data);
+                    break;
+                default:
+                    throw new Exception("Peak option is unavailable");
+            }
+            return trendData;
+        }
+
+
 
         //Get P2P
         public float GetPeakToPeak(float[] data)
@@ -43,6 +65,8 @@ namespace _0128_Vibrometer
             float lowerPeakScala = Math.Abs(data.Min());
             return upperPeakScala > lowerPeakScala == true ? upperPeakScala : lowerPeakScala;
         }
+
+
 
     }
 }
