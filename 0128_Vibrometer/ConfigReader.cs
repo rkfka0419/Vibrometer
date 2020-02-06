@@ -17,7 +17,6 @@ namespace _0128_Vibrometer
 
         public ConfigReader()
         {
-           
         }
         public List<ConfigData> ReadFile(string path)
         {
@@ -43,20 +42,39 @@ namespace _0128_Vibrometer
             string trendTypeString = tokens[1];
             configData.trendType = (TrendType)Enum.Parse(typeof(TrendType), trendTypeString);
 
-            // peak의 종류를 알아내야하는 문제 있음 -> 지금은 Rms의 인덱스 하드코딩
             if (tokens.Length > 2)
             {//if range parameter exist;
                 configData.optionFlag = true;
-                configData.rangeIndex = new int[2];
-                configData.rangeIndex[0] = Int32.Parse(tokens[2].Split('-')[0]); //start index
-                configData.rangeIndex[1] = Int32.Parse(tokens[2].Split('-')[1]); // end index
+                configData.option = tokens[2];
             }
             else
             {
                 configData.optionFlag = false;
-                configData.rangeIndex = null;
+                configData.option = null;
             }
             return configData;
         }
+        //public ConfigData ParseLine(string[] tokens)
+        //{
+        //    ConfigData configData = new ConfigData(); ;
+        //    configData.title = tokens[0];
+        //    string trendTypeString = tokens[1];
+        //    configData.trendType = (TrendType)Enum.Parse(typeof(TrendType), trendTypeString);
+
+        //    // peak의 종류를 알아내야하는 문제 있음 -> 지금은 Rms의 인덱스 하드코딩
+        //    if (tokens.Length > 2)
+        //    {//if range parameter exist;
+        //        configData.optionFlag = true;
+        //        configData.rangeIndex = new int[2];
+        //        configData.rangeIndex[0] = Int32.Parse(tokens[2].Split('-')[0]); //start index
+        //        configData.rangeIndex[1] = Int32.Parse(tokens[2].Split('-')[1]); // end index
+        //    }
+        //    else
+        //    {
+        //        configData.optionFlag = false;
+        //        configData.rangeIndex = null;
+        //    }
+        //    return configData;
+        //}
     }
 }

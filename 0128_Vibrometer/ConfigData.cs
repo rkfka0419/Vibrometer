@@ -10,9 +10,4 @@
         public string option;
         
     }
-    public struct RangeIndex
-    {
-        int start;
-        int end;
-    }
 }

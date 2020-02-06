@@ -80,7 +80,21 @@ namespace _0128_Vibrometer
             {
                 ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(lineDrawerItem.GetTrendType());
                 //lineDrawerItem. 트렌드값이 계산되기 전에 옵션 메뉴가 반영되어야 함
-                TrendData trendData = trendCalculator.GetTrend(wave.Data);
+                TrendData trendData;
+                string option;
+                if(lineDrawerItem.isOption())
+                {
+                    option = lineDrawerItem.GetOption();
+                    Console.WriteLine("Trend Option is {0}", option);
+                    trendData = trendCalculator.GetTrend(wave.Data, option);
+                }
+                else
+                {
+                    Console.WriteLine("Trend Option is null");
+                    trendData = trendCalculator.GetTrend(wave.Data);
+                }
+                //trendData = trendCalculator.GetTrend(wave.Data);
+
                 lineDrawerItem.DrawLine(trendData.Value);
                 Console.WriteLine(trendData.Time);
             }

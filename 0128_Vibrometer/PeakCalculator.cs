@@ -17,6 +17,7 @@ namespace _0128_Vibrometer
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
+            Console.WriteLine("Peak option is {0}", option);
             switch (option)
             {
                 case "p2p":
