@@ -9,6 +9,32 @@ namespace _0128_Vibrometer
     //SpectrumCalculator
     class RmsCalculator : ITrendCalculator
     {
+        public string title { get; set; }
+        public string option { get; set; }
+        int start, end;
+        //생성자
+        private RmsCalculator(string title, string option)
+        {
+            this.title = title;
+            this.option = option;
+        }
+        
+        //파싱한 후 옵션을 제대로 가지게 하고 새로운 인스턴스 리턴
+        public static RmsCalculator Parse(string line)
+        {
+            return new RmsCalculator();
+        }
+
+        //Get Rms with Option
+        public TrendData GetTrend(WaveData wave, double[] spectrum)
+        {
+            TrendData trendData;
+            var token = this.option.Split('-').Select(int.Parse).ToArray();
+            trendData.Value = GetRMS(spectrum, token[0], token[1]);
+            trendData.Time = DateTime.Now;
+
+            return trendData;
+        }
         public TrendData GetTrend(float[] data)
         {
             TrendData trendData;
@@ -28,10 +54,24 @@ namespace _0128_Vibrometer
 
             return trendData;
         }
-        
+
 
         // Get RMS 
         public float GetRMS(float[] data)
+        {
+            double square = 0;
+            float mean, root = 0;
+            //float[] fft
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                square += (data[i] * data[i]);
+            }
+            mean = (float)square / data.Length;
+            root = (float)Math.Sqrt(mean);
+            return root;
+        }
+        public float GetRMS(double[] data)
         {
             double square = 0;
             float mean, root = 0;
@@ -51,6 +91,20 @@ namespace _0128_Vibrometer
         }
         // Get RMS with Bandwidth
         public float GetRMS(float[] data, int start, int end)
+        {
+            double square = 0;
+            float mean, root = 0;
+
+            for (int i = start; i < end; i++)
+            {
+                square += (data[i] * data[i]);
+            }
+            mean = (float)square / data.Length;
+            root = (float)Math.Sqrt(mean);
+            return root;
+
+        }
+        public float GetRMS(double[] data, int start, int end)
         {
             double square = 0;
             float mean, root = 0;

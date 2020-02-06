@@ -6,6 +6,24 @@ namespace _0128_Vibrometer
     //WaveCalculator
     class PeakCalculator : ITrendCalculator
     {
+        public string title { get ; set; }
+        public string option { get; set; }
+
+        //생성자
+        public PeakCalculator(string title, string option)
+        {
+            this.title = title;
+            this.option = option;
+        }
+
+
+
+
+        public TrendData GetTrend(WaveData wave, double[] spectrum)
+        {
+            return GetTrend(wave.Data);
+        }
+
         public TrendData GetTrend(float[] data)
         {
             TrendData trendData;
@@ -17,8 +35,8 @@ namespace _0128_Vibrometer
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
-            Console.WriteLine("Peak option is {0}", option);
-            switch (option)
+            Console.WriteLine("Peak option is {0}", this.option);
+            switch (this.option)
             {
                 case "p2p":
                     trendData.Value = GetPeakToPeak(data);
@@ -66,8 +84,6 @@ namespace _0128_Vibrometer
             float lowerPeakScala = Math.Abs(data.Min());
             return upperPeakScala > lowerPeakScala == true ? upperPeakScala : lowerPeakScala;
         }
-
-
 
     }
 }

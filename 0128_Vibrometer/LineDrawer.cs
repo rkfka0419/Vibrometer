@@ -9,8 +9,6 @@ namespace _0128_Vibrometer
         private Line line;
         private string title;
         private TrendType trendType;
-        private int[] rangeIndex = new int[2];
-        private bool optionFlag;
         private string option;
 
         //이미 디자이너폼에서 만들어진 라인 매개변수 받음
@@ -69,10 +67,6 @@ namespace _0128_Vibrometer
         {
             return this.trendType;
         }
-        public void SetRangeIndex(int[] rangeindex)
-        {
-            this.rangeIndex = rangeindex;
-        }
         public int[] GetRangeIndex()
         {
             return this.rangeIndex;
@@ -81,10 +75,6 @@ namespace _0128_Vibrometer
         {
             //return this.optionFlag ? this.option : null;
             return this.option;
-        }
-        public bool isOption()
-        {
-            return this.optionFlag;
         }
 
         //get field data from single configfile line
