@@ -13,24 +13,29 @@ namespace _0128_Vibrometer
         public string option { get; set; }
         int start, end;
         //생성자
-        private RmsCalculator(string title, string option)
+       public RmsCalculator(string title, int start, int end)
         {
             this.title = title;
-            this.option = option;
+            this.start = start;
+            this.end = end;
         }
-        
+       
+
+
         //파싱한 후 옵션을 제대로 가지게 하고 새로운 인스턴스 리턴
-        public static RmsCalculator Parse(string line)
+        public static RmsCalculator Parse(string title, string line)
         {
-            return new RmsCalculator();
+            var token = line.Split('-').Select(int.Parse).ToArray();
+            return new RmsCalculator(title, token[0], token[1]);
         }
 
         //Get Rms with Option
-        public TrendData GetTrend(WaveData wave, double[] spectrum)
+        public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
             TrendData trendData;
-            var token = this.option.Split('-').Select(int.Parse).ToArray();
-            trendData.Value = GetRMS(spectrum, token[0], token[1]);
+            //var token = this.option.Split('-').Select(int.Parse).ToArray();
+            //trendData.Value = GetRMS(spectrum, token[0], token[1]);
+            trendData.Value = GetRMS(spectrum, this.start, this.end);
             trendData.Time = DateTime.Now;
 
             return trendData;

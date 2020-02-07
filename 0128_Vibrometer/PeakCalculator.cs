@@ -19,42 +19,62 @@ namespace _0128_Vibrometer
 
 
 
-        public TrendData GetTrend(WaveData wave, double[] spectrum)
-        {
-            return GetTrend(wave.Data);
-        }
-
-        public TrendData GetTrend(float[] data)
+        public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
-            trendData.Value = GetPeakToPeak(data);
-            return trendData;
-        }
-        public TrendData GetTrend(float[] data, string option)
-        {
-            TrendData trendData;
-            trendData.Time = DateTime.Now;
-            Console.WriteLine("Peak option is {0}", this.option);
             switch (this.option)
             {
                 case "p2p":
-                    trendData.Value = GetPeakToPeak(data);
+                    trendData.Value = GetPeakToPeak(wave);
                     break;
                 case "upper":
-                    trendData.Value = GetUpperPeak(data);
+                    trendData.Value = GetUpperPeak(wave);
                     break;
                 case "lower":
-                    trendData.Value = GetLowerPeak(data);
+                    trendData.Value = GetLowerPeak(wave);
                     break;
                 case "peak":
-                    trendData.Value = GetPeak(data);
+                    trendData.Value = GetPeak(wave);
                     break;
                 default:
                     throw new Exception("Peak option is unavailable");
             }
             return trendData;
         }
+
+        //public TrendData GetTrend(float[] data)
+        //{
+        //    TrendData trendData;
+        //    trendData.Time = DateTime.Now;
+        //    trendData.Value = GetPeakToPeak(data);
+        //    return trendData;
+        ////}
+        //public TrendData GetTrend(float[] data, string option)
+        //public TrendData GetTrend(float[] data, string option)
+        //{
+        //    TrendData trendData;
+        //    trendData.Time = DateTime.Now;
+        //    Console.WriteLine("Peak option is {0}", this.option);
+        //    switch (this.option)
+        //    {
+        //        case "p2p":
+        //            trendData.Value = GetPeakToPeak(data);
+        //            break;
+        //        case "upper":
+        //            trendData.Value = GetUpperPeak(data);
+        //            break;
+        //        case "lower":
+        //            trendData.Value = GetLowerPeak(data);
+        //            break;
+        //        case "peak":
+        //            trendData.Value = GetPeak(data);
+        //            break;
+        //        default:
+        //            throw new Exception("Peak option is unavailable");
+        //    }
+        //    return trendData;
+        //}
 
 
 
@@ -74,15 +94,27 @@ namespace _0128_Vibrometer
         {
             return data.Max();
         }
+        public float GetUpperPeak(WaveData wave)
+        {
+            return GetUpperPeak(wave.Data);
+        }
         public float GetLowerPeak(float[] data)
         {
             return data.Min();
+        }
+        public float GetLowerPeak(WaveData wave)
+        {
+            return GetLowerPeak(wave.Data);
         }
         public float GetPeak(float[] data)
         {
             float upperPeakScala = data.Max();
             float lowerPeakScala = Math.Abs(data.Min());
             return upperPeakScala > lowerPeakScala == true ? upperPeakScala : lowerPeakScala;
+        }
+        public float GetPeak(WaveData wave)
+        {
+            return GetPeak(wave.Data);
         }
 
     }

@@ -5,10 +5,10 @@
         string title { get; set; }
         string option { get; set; }
 
-        TrendData GetTrend(float[] data);
-        TrendData GetTrend(float[] data, string option);
+        //TrendData GetTrend(float[] data);
+        //TrendData GetTrend(float[] data, string option);
 
-        TrendData GetTrend(WaveData wave, double[] spectrum);
+        TrendData GetTrend(WaveData wave, float[] spectrum);
         // 옵션을 없애보자.
         //인터페이스 멤버변수르 title을 받으면됨
         //메인폼에서 인터페이스 배열을 받아서 생성자로 타이틀, rms타입, 옵션 받으면 됨...

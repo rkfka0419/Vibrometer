@@ -25,7 +25,7 @@ namespace _0128_Vibrometer
             Complex[] fftComplex = new Complex[wave.Data.Length]; // the FFT function requires complex format
             for (int i = 0; i < arrayLength; i++)
             {
-                fftComplex[i] = new Complex(wave.Data.[i], 0.0); // make it complex format (imaginary = 0)
+                fftComplex[i] = new Complex(wave.Data[i], 0.0); // make it complex format (imaginary = 0)
             }
             Accord.Math.FourierTransform.FFT(fftComplex, Accord.Math.FourierTransform.Direction.Forward);
             for (int i = 0; i < arrayLength; i++)

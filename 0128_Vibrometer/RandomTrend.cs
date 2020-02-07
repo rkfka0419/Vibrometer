@@ -19,7 +19,7 @@ namespace _0128_Vibrometer
         }
 
 
-        public TrendData GetTrend(WaveData wave, double[] spectrum)
+        public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;

@@ -10,7 +10,7 @@ namespace _0128_Vibrometer
         LineDrawer lineDrawWave;
         LineDrawer lineDrawFFT;
         ConfigReader configReader;
-        const string CONFIG_FILE_PATH = @"config.txt";
+        const string CONFIG_FILE_PATH = @"config2.txt";
 
         //파일에서 입력받아 저장할 LineDraw 클래스 리스트
         List<ConfigData> configList = new List<ConfigData>();
@@ -79,19 +79,15 @@ namespace _0128_Vibrometer
             lineDrawWave.DrawLine(wave, true);
             Spectrum spectrum = new Spectrum();
             spectrum.GetFFT(wave);
-            //Draw FFT wave
             float[] fft = spectrum.fft;
-            var lineAndCalculator = lineDrawerList.z
+            //Draw FFT wave
+            lineDrawFFT.DrawLine(fft, true);
 
-
-            foreach (var line, cal in (lineDrawerList, trendCalculatorLisr))
+            for(int i = 0; i<lineDrawerList.Count;i++)
             {
-                
-                lineDrawerItem.DrawLine(trendData.Value);
-                Console.WriteLine(trendData.Time);
-
-
-
+                TrendData trendData = trendCalculatorList[i].GetTrend(wave, fft);
+                lineDrawerList[i].DrawLine(trendData.Value);
+            }
 
 
 
@@ -113,7 +109,7 @@ namespace _0128_Vibrometer
                 //}
                 //trendData = trendCalculator.GetTrend(wave.Data);
 
-            }
+            
 
         }
     }

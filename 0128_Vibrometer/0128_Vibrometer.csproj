@@ -73,7 +73,7 @@
     <Compile Include="TrendCalculatorFactory.cs" />
     <Compile Include="TrendData.cs" />
     <Compile Include="LineDrawer.cs" />
-    <Compile Include="FFTCalculator.cs" />
+    <Compile Include="Spectrum.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

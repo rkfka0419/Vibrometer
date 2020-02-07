@@ -67,10 +67,10 @@ namespace _0128_Vibrometer
         {
             return this.trendType;
         }
-        public int[] GetRangeIndex()
-        {
-            return this.rangeIndex;
-        }
+        //public int[] GetRangeIndex()
+        //{
+        //    return this.rangeIndex;
+        //}
         public string GetOption()
         {
             //return this.optionFlag ? this.option : null;
@@ -84,7 +84,7 @@ namespace _0128_Vibrometer
             this.title = configData.title;
             this.line.Title = this.title;
             this.trendType = configData.trendType;
-            this.optionFlag = configData.optionFlag;
+            //this.optionFlag = configData.optionFlag;
             this.option = configData.option;
         }
         //public void SetConfiguration(ConfigData configData)
