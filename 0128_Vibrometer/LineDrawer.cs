@@ -77,17 +77,6 @@ namespace _0128_Vibrometer
             this.trendType = configData.trendType;
             this.option = configData.option;
         }
-        //public void SetConfiguration(ConfigData configData)
-        //{
-
-        //    this.title = configData.title;
-        //    this.line.Title = this.title;
-        //    this.trendType = configData.trendType;
-        //    if (configData.optionFlag == true)
-        //        this.rangeIndex = configData.rangeIndex;
-        //    else
-        //        this.rangeIndex = null;
-        //}
 
         //라인 그리는 메소드
 

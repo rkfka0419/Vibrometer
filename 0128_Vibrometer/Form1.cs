@@ -41,7 +41,7 @@ namespace _0128_Vibrometer
                 lineTempObj.SetConfiguration(configItem);
                 
                 if (lineTempObj.GetTrendType() == "peak" || lineTempObj.GetTrendType() == "random")
-                    lineTempObj.SetVerticalAxisToRight(); // 축을 Right로 설정
+                    lineTempObj.SetVerticalAxisToRight(); //피크랑 랜덤축을 Right로 설정
 
                 lineDrawerList.Add(lineTempObj);
             }
@@ -80,6 +80,8 @@ namespace _0128_Vibrometer
         {
             //Draw Wave
             lineDrawWave.DrawLine(wave, true);
+
+            //Calculate Spectrum data from wave
             Spectrum spectrum = new Spectrum();
             spectrum.GetFFT(wave);
             //Draw FFT wave
@@ -88,7 +90,7 @@ namespace _0128_Vibrometer
             //Draw configured from file
             for(int i = 0; i<lineDrawerList.Count;i++)
             {
-                TrendData trendData = trendCalculatorList[i].GetTrend(wave, spectrum.fft);
+                TrendData trendData = trendCalculatorList[i].GetTrend(wave, spectrum.fft); //스펙트럼 in
                 lineDrawerList[i].DrawLine(trendData.Value);
             }
         }

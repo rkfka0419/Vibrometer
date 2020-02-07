@@ -18,42 +18,19 @@ namespace _0128_Vibrometer
             this.option = option;
         }
 
-
         public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
-            trendData.Value = GetRandomValue(wave.Data);
+            trendData.Value = new Random().Next((int)wave.Data.Min(), (int)wave.Data.Max());
             return trendData;
         }
-
-        //public float GetRandomValue(float[] data, string option)
-        //{
-        //    Random rand = new Random();
-        //    return rand.Next((int)data.Min(), (int)data.Max());
-        //}
-
         public TrendData GetTrend(float[] data)
         {
             TrendData trendData;
             trendData.Time = DateTime.Now;
-            trendData.Value = GetRandomValue(data);
+            trendData.Value = new Random().Next((int)data.Min(), (int)data.Max());
             return trendData;
         }
-        public TrendData GetTrend(float[] data, string option)
-        {
-            TrendData trendData;
-            trendData.Time = DateTime.Now;
-            //trendData.Value = GetRandomValue(data, option);
-            trendData.Value = GetRandomValue(data);
-            return trendData;
-        }
-
-        public float GetRandomValue(float[] data)
-        {
-            Random rand = new Random();
-            return rand.Next((int)data.Min(), (int)data.Max());
-        }
-        
     }
 }

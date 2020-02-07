@@ -3,21 +3,10 @@ using System.Collections.Generic;
 
 namespace _0128_Vibrometer
 {
-    public enum TrendType
-    {
-        p2p,
-        rms,
-        random,
-        peak,
-        upperPeak,
-        lowerPeak
-    }
     class ConfigReader
     {
 
-        public ConfigReader()
-        {
-        }
+        public ConfigReader(){}
         public List<ConfigData> ReadFile(string path)
         {
             List<ConfigData> configList = new List<ConfigData>();
