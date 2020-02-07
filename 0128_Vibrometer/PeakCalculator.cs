@@ -16,9 +16,6 @@ namespace _0128_Vibrometer
             this.option = option;
         }
 
-
-
-
         public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
             TrendData trendData;

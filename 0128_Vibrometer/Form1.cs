@@ -32,13 +32,17 @@ namespace _0128_Vibrometer
 
             //list 객체 하나씩 생성 및 푸쉬
             foreach (var configItem in configList)
-            { // 파일 라인길이만큼 객체생성
-                LineDrawer lineTempObj = new LineDrawer(tChart3, new Steema.TeeChart.Styles.Line());
-                ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(configItem.title, configItem.trendType, configItem.option);
-
+            {
+                ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(
+                    configItem.title, configItem.trendType, configItem.option);
                 trendCalculatorList.Add(trendCalculator);
 
+                LineDrawer lineTempObj = new LineDrawer(tChart3, new Steema.TeeChart.Styles.Line());
                 lineTempObj.SetConfiguration(configItem);
+                
+                if (lineTempObj.GetTrendType() == "peak" || lineTempObj.GetTrendType() == "random")
+                    lineTempObj.SetVerticalAxisToRight(); // 축을 Right로 설정
+
                 lineDrawerList.Add(lineTempObj);
             }
 
@@ -46,7 +50,6 @@ namespace _0128_Vibrometer
             micControll.StartRecording();
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
         }
-        
         
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -79,38 +82,15 @@ namespace _0128_Vibrometer
             lineDrawWave.DrawLine(wave, true);
             Spectrum spectrum = new Spectrum();
             spectrum.GetFFT(wave);
-            float[] fft = spectrum.fft;
             //Draw FFT wave
-            lineDrawFFT.DrawLine(fft, true);
+            lineDrawFFT.DrawLine(spectrum.fft, true);
 
+            //Draw configured from file
             for(int i = 0; i<lineDrawerList.Count;i++)
             {
-                TrendData trendData = trendCalculatorList[i].GetTrend(wave, fft);
+                TrendData trendData = trendCalculatorList[i].GetTrend(wave, spectrum.fft);
                 lineDrawerList[i].DrawLine(trendData.Value);
             }
-
-
-
-
-                //-------
-                ////ITrendCalculator trendCalculator = trendCalculatorFactory.trendCalculator(lineDrawerItem.GetTrendType());
-                //TrendData trendData;
-                //string option;
-                //if(lineDrawerItem.isOption())
-                //{
-                //    option = lineDrawerItem.GetOption();
-                //    Console.WriteLine("Trend Option is {0}", option);
-                //    trendData = trendCalculator.GetTrend(wave.Data, option);
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Trend Option is null");
-                //    trendData = trendCalculator.GetTrend(wave.Data);
-                //}
-                //trendData = trendCalculator.GetTrend(wave.Data);
-
-            
-
         }
     }
 }

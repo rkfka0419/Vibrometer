@@ -2,15 +2,15 @@
 {
     class TrendCalculatorFactory
     {
-        public ITrendCalculator trendCalculator(string title, TrendType trendType, string option)
+        public ITrendCalculator trendCalculator(string title, string trendType, string option)
         {
                 switch (trendType)
             {
-                case TrendType.p2p:
+                case "peak":
                     return new PeakCalculator(title, option);
-                case TrendType.rms:
+                case "rms":
                     return RmsCalculator.Parse(title, option); //new RmsCalculator(title, option);
-                case TrendType.random:
+                case "random":
                     return new RandomTrend(title);
                 default:
                     return null;

@@ -1,6 +1,6 @@
-﻿using NAudio.Wave; // installed with nuget
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NAudio.Wave; // installed with nuget
 
 namespace _0128_Vibrometer
 {
@@ -21,8 +21,8 @@ namespace _0128_Vibrometer
             wi = new WaveIn();
             wi.DeviceNumber = 0;
             wi.WaveFormat = new NAudio.Wave.WaveFormat(SAMPLE_RATE, 1);
-            //wi.BufferMilliseconds = wi.WaveFormat.AverageBytesPerSecond / 1000;
-            //wi.BufferMilliseconds = 20;
+            //wi.BufferMilliseconds = wi.WaveFormat.AverageBytesPerSecond / 5000;
+            //wi.BufferMilliseconds = 100;
 
             wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
         }
@@ -47,8 +47,6 @@ namespace _0128_Vibrometer
                     {
                         wave.Data[i] = sampleQueue.Dequeue();
                     }
-
-                    //ChartContoll.Logging("wi_DataAvailable : ");
                     sampleQueue.Clear();
                     OnReceivedWaveData(wave);
                 }

@@ -54,7 +54,6 @@ namespace _0128_Vibrometer
             Random rand = new Random();
             return rand.Next((int)data.Min(), (int)data.Max());
         }
-
-
+        
     }
 }

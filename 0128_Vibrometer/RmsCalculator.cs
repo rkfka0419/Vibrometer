@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _0128_Vibrometer
 {
@@ -20,7 +17,6 @@ namespace _0128_Vibrometer
             this.end = end;
         }
        
-
 
         //파싱한 후 옵션을 제대로 가지게 하고 새로운 인스턴스 리턴
         public static RmsCalculator Parse(string title, string line)

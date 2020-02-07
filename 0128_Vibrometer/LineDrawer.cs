@@ -1,6 +1,6 @@
-﻿using Steema.TeeChart;
+﻿using System;
+using Steema.TeeChart;
 using Steema.TeeChart.Styles;
-using System;
 
 namespace _0128_Vibrometer
 {
@@ -8,7 +8,7 @@ namespace _0128_Vibrometer
     {
         private Line line;
         private string title;
-        private TrendType trendType;
+        private string trendType;
         private string option;
 
         //이미 디자이너폼에서 만들어진 라인 매개변수 받음
@@ -59,22 +59,13 @@ namespace _0128_Vibrometer
         {
             return this.title;
         }
-        public void SetTrendType(TrendType trendType)
+        public void SetTrendType(string trendType)
         {
             this.trendType = trendType;
         }
-        public TrendType GetTrendType()
+        public string GetTrendType()
         {
             return this.trendType;
-        }
-        //public int[] GetRangeIndex()
-        //{
-        //    return this.rangeIndex;
-        //}
-        public string GetOption()
-        {
-            //return this.optionFlag ? this.option : null;
-            return this.option;
         }
 
         //get field data from single configfile line
@@ -84,7 +75,6 @@ namespace _0128_Vibrometer
             this.title = configData.title;
             this.line.Title = this.title;
             this.trendType = configData.trendType;
-            //this.optionFlag = configData.optionFlag;
             this.option = configData.option;
         }
         //public void SetConfiguration(ConfigData configData)
