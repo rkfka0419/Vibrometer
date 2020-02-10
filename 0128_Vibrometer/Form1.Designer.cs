@@ -1385,7 +1385,7 @@
             this.lineWave.Marks.TailParams.Margin = 0F;
             this.lineWave.Marks.TailParams.PointerHeight = 8D;
             this.lineWave.Marks.TailParams.PointerWidth = 8D;
-            this.lineWave.OriginalCursor = null;
+            this.lineWave.OriginalCursor = System.Windows.Forms.Cursors.Default;
             // 
             // 
             // 

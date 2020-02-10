@@ -3,7 +3,7 @@
     interface ITrendCalculator
     {
         string title { get; set; }
-        string option { get; set; }
+        //string option { get; set; }
 
         TrendData GetTrend(WaveData wave, float[] spectrum);
     }

@@ -8,6 +8,7 @@ namespace _0128_Vibrometer
         public string title { get; set; }
         public string option { get; set; }
 
+        public RandomTrend() { }
         public RandomTrend(string title)
         {
             this.title = title;

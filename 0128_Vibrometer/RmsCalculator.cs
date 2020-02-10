@@ -7,8 +7,8 @@ namespace _0128_Vibrometer
     class RmsCalculator : ITrendCalculator
     {
         public string title { get; set; }
-        public string option { get; set; }
-        int start, end;
+        //public string option { get; set; }
+        public int start, end; // property들을 읽어옴
         //생성자
        public RmsCalculator(string title, int start, int end)
         {

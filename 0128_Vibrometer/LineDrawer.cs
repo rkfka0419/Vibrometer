@@ -67,16 +67,7 @@ namespace _0128_Vibrometer
         {
             return this.trendType;
         }
-
-        //get field data from single configfile line
-        public void SetConfiguration(ConfigData configData)
-        {
-
-            this.title = configData.title;
-            this.line.Title = this.title;
-            this.trendType = configData.trendType;
-            this.option = configData.option;
-        }
+        
 
         //라인 그리는 메소드
 

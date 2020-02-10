@@ -73,6 +73,18 @@
   <ItemGroup>
     <Compile Include="ConfigData.cs" />
     <Compile Include="ConfigReader.cs" />
+    <Compile Include="TimebaseChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TimebaseChart.Designer.cs">
+      <DependentUpon>TimebaseChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeDialog.Designer.cs">
+      <DependentUpon>TimeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrendCalculatorFactory.cs" />
     <Compile Include="TrendData.cs" />
     <Compile Include="LineDrawer.cs" />
@@ -112,6 +124,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TimebaseChart.resx">
+      <DependentUpon>TimebaseChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeDialog.resx">
+      <DependentUpon>TimeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
