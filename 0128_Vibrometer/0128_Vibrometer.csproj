@@ -47,6 +47,9 @@
     <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.9.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -68,14 +71,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TimebaseChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TimebaseChart.Designer.cs">
+      <DependentUpon>TimebaseChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeDialog.Designer.cs">
+      <DependentUpon>TimeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrendData.cs" />
+    <Compile Include="LineDrawer.cs" />
+    <Compile Include="Spectrum.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log.cs" />
+    <Compile Include="MicControll.cs" />
+    <Compile Include="PeakCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomTrend.cs" />
+    <Compile Include="RmsCalculator.cs" />
+    <Compile Include="ITrendCalculator.cs" />
     <Compile Include="VibrometerDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +108,9 @@
     <Compile Include="WaveData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LineDraw.resx">
+      <DependentUpon>LineDrawer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +121,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TimebaseChart.resx">
+      <DependentUpon>TimebaseChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeDialog.resx">
+      <DependentUpon>TimeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
