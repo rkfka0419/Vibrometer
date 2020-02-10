@@ -17,7 +17,7 @@ namespace _0128_Vibrometer
         List<LineDrawer> lineDrawerList = new List<LineDrawer>();
         List<ITrendCalculator> trendCalculatorList = new List<ITrendCalculator>();
 
-        ITrendCalculator[] calc = new ITrendCalculator[] { };
+        ITrendCalculator[] trendCalculator = new ITrendCalculator[] { };
 
         public Form1()
         {
@@ -25,18 +25,33 @@ namespace _0128_Vibrometer
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
 
+
+            var connectionString = @"Server=.;database=VibrometerDB;uid=sa;password=rootroot;";
+            VibrometerClassDataContext context = new VibrometerClassDataContext(connectionString);
+            channel cha = new channel();
+            if (context.DatabaseExists())
+            {
+                Console.WriteLine("data exist");
+                context.g;
+            }
+            cha.name = "channel1";
+            cha.sample_rate = 5;
+            context.SubmitChanges();
+
+
+
+
             lineDrawWave = new LineDrawer(lineWave);
             lineDrawFFT = new LineDrawer(lineFFT);
 
             var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
-
-            calc = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
+            trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
 
             //var jsonStr = JsonConvert.SerializeObject(calculators, Newtonsoft.Json.Formatting.Indented, setting);
             ////Console.WriteLine(jsonStr);
             //File.WriteAllText("config.json", jsonStr);
 
-            for (int i = 0; i < calc.Length; i++)
+            for (int i = 0; i < trendCalculator.Length; i++)
             {
                 LineDrawer lineTempObj = new LineDrawer(tChart3, new Steema.TeeChart.Styles.Line());
                 lineDrawerList.Add(lineTempObj);
@@ -83,10 +98,11 @@ namespace _0128_Vibrometer
             //Draw FFT wave
             lineDrawFFT.DrawLine(spectrum.fft, true);
             
-            for (int i = 0; i < calc.Length; i++)
+            for (int i = 0; i < trendCalculator.Length; i++)
             {
-                TrendData trendData = calc[i].GetTrend(wave, spectrum.fft);
-                lineDrawerList[i].DrawLine(trendData.Value);
+                //TrendData trendData = trendCalculator[i].GetTrend(wave, spectrum.fft);
+                //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
+                lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
             }
 
         }

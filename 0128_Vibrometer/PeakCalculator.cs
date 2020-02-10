@@ -77,6 +77,5 @@ namespace _0128_Vibrometer
         {
             return GetPeak(wave.Data);
         }
-
     }
 }

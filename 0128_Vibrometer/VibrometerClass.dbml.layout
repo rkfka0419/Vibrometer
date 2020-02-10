@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VibrometerClass">
+  <DataContextMoniker Name="/VibrometerClassDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d45e0ea9-5e85-4483-97a5-32b9e1a091fc" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/VibrometerClassDataContext/channel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f4f53bc-a365-4da3-8611-72b6ea4298d4" absoluteBounds="0.5149999999999999, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3a6ddbe-d860-4d77-b96e-839a1517f339" absoluteBounds="3.375, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/VibrometerClassDataContext/wave_data" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2600f3c9-1f02-45c0-a7be-16b2c16f4a7e" absoluteBounds="3.3900000000000006, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="88ec5c9e-e11a-4aa7-8e98-737580ab72ed" absoluteBounds="3.375, 2.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/VibrometerClassDataContext/trend_data" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a16bb893-9af3-4307-b4c6-858437702868" absoluteBounds="3.3900000000000006, 2.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c33c2a4f-35df-429b-91df-7476a4aed5ca" absoluteBounds="3.125, 5.375, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/VibrometerClassDataContext/RmsConfig" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0e269dc-f8a5-498a-bb1c-9f7b13e2f383" absoluteBounds="3.1399999999999997, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e0357ae6-d67a-464b-b28c-3f0c6370e173" absoluteBounds="0.5, 5.25, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/VibrometerClassDataContext/PeakConfig" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea80720e-e5af-49e4-95e9-df9b4076991a" absoluteBounds="0.51499999999999968, 5.71, 1.9700000000000002, 0.44169108072916663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0cb35daa-0afc-4d8e-a394-80a4ccb40765" absoluteBounds="0.5, 2.375, 2, 1.1939925130208331">
+      <DataClassMoniker Name="/VibrometerClassDataContext/TrendConfig" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34ef01df-98c2-40e3-82a0-374afc0849a9" absoluteBounds="0.5149999999999999, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <inheritanceConnector edgePoints="[(1.5 : 3.56899251302083); (1.5 : 5.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+      <nodes>
+        <classShapeMoniker Id="0cb35daa-0afc-4d8e-a394-80a4ccb40765" />
+        <classShapeMoniker Id="e0357ae6-d67a-464b-b28c-3f0c6370e173" />
+      </nodes>
+    </inheritanceConnector>
+    <inheritanceConnector edgePoints="[(1.5 : 3.56899251302083); (1.5 : 5); (4.125 : 5); (4.125 : 5.375)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="7a7fe09e-e9ef-4b01-9ff3-bde95e827b62">
+      <nodes>
+        <classShapeMoniker Id="0cb35daa-0afc-4d8e-a394-80a4ccb40765" />
+        <classShapeMoniker Id="c33c2a4f-35df-429b-91df-7476a4aed5ca" />
+      </nodes>
+    </inheritanceConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

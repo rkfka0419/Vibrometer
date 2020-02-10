@@ -100,10 +100,13 @@
     <Compile Include="RandomTrend.cs" />
     <Compile Include="RmsCalculator.cs" />
     <Compile Include="ITrendCalculator.cs" />
-    <Compile Include="VibrometerDB.designer.cs">
+    <Compile Include="VibrometerClass.cs">
+      <DependentUpon>VibrometerClass.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="VibrometerClass.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VibrometerDB.dbml</DependentUpon>
+      <DependentUpon>VibrometerClass.dbml</DependentUpon>
     </Compile>
     <Compile Include="WaveData.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -127,7 +130,6 @@
     <EmbeddedResource Include="TimeDialog.resx">
       <DependentUpon>TimeDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,13 +140,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="VibrometerDB.dbml">
+    <None Include="VibrometerClass.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>VibrometerDB.designer.cs</LastGenOutput>
+      <LastGenOutput>VibrometerClass.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="VibrometerDB.dbml.layout">
-      <DependentUpon>VibrometerDB.dbml</DependentUpon>
+    <None Include="VibrometerClass.dbml.layout">
+      <DependentUpon>VibrometerClass.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

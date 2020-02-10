@@ -7,7 +7,6 @@ namespace _0128_Vibrometer
     class RmsCalculator : ITrendCalculator
     {
         public string title { get; set; }
-        //public string option { get; set; }
         public int start, end; // property들을 읽어옴
         //생성자
        public RmsCalculator(string title, int start, int end)
@@ -16,7 +15,6 @@ namespace _0128_Vibrometer
             this.start = start;
             this.end = end;
         }
-       
 
         //파싱한 후 옵션을 제대로 가지게 하고 새로운 인스턴스 리턴
         public static RmsCalculator Parse(string title, string line)
@@ -24,7 +22,6 @@ namespace _0128_Vibrometer
             var token = line.Split('-').Select(int.Parse).ToArray();
             return new RmsCalculator(title, token[0], token[1]);
         }
-
         //Get Rms with Option
         public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
@@ -43,6 +40,5 @@ namespace _0128_Vibrometer
             trendData.Time = DateTime.Now;
             return trendData;
         }
-
     }
 }

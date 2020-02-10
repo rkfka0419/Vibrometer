@@ -2,13 +2,12 @@
 using System.Numerics;
 namespace _0128_Vibrometer
 {
-    class Spectrum
+    public class Spectrum
     {
         public float[] fft { get; set; }
         
         public void GetFFT(WaveData wave, bool isPositiveFFT = true)
         {
-
             int arrayLength = wave.Data.Length / 2;
             if (isPositiveFFT == false)
                 arrayLength *= 2;

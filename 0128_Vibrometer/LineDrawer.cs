@@ -7,9 +7,6 @@ namespace _0128_Vibrometer
     class LineDrawer
     {
         private Line line;
-        private string title;
-        private string trendType;
-        private string option;
 
         //이미 디자이너폼에서 만들어진 라인 매개변수 받음
         public LineDrawer()
@@ -48,29 +45,10 @@ namespace _0128_Vibrometer
         }
         public Line GetLine()
         {
-
             return this.line;
         }
-        public void SetTitle(String title)
-        {
-            line.Title = title;
-        }
-        public string GetTitle()
-        {
-            return this.title;
-        }
-        public void SetTrendType(string trendType)
-        {
-            this.trendType = trendType;
-        }
-        public string GetTrendType()
-        {
-            return this.trendType;
-        }
-        
 
-        //라인 그리는 메소드
-
+        // Draw on chart
         public void DrawLine(float[] data, bool isClear = false)
         {
             //Draw wave Graph
@@ -92,6 +70,23 @@ namespace _0128_Vibrometer
                 line.Clear();
             }
             line.Add(point);
+        }
+        public void DrawLine(string title, float point, bool isClear = false)
+        {
+            if (isClear == true)
+            {
+                line.Clear();
+            }
+
+            this.line.Title = title;
+            line.Add(point);
+        }
+        public TrendData DrawLine(WaveData wave, Spectrum spectrum, ITrendCalculator calc, bool isClear = false)
+        {
+            this.line.Title = calc.title;
+            TrendData trendData = calc.GetTrend(wave, spectrum.fft);
+            DrawLine(trendData.Value, isClear);
+            return trendData;
         }
 
         //Set Line Vertical Axie. Default is Left(false)
