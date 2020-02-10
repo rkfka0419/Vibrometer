@@ -1,0 +1,8 @@
+RMS1 rms 10-500
+RMS2 rms 500-1000
+RMS3 rms 1000-2000
+RMS4 rms 2000-4000
+Peak1 peak peak
+Peak2 peak p2p
+Peak2 peak lower
+Random random
