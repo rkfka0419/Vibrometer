@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _0128_Vibrometer
@@ -14,6 +11,10 @@ namespace _0128_Vibrometer
         [STAThread]
         static void Main()
         {
+
+            
+            //new TimeDialog().ShowDialog();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
