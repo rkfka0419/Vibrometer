@@ -71,8 +71,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigData.cs" />
-    <Compile Include="ConfigReader.cs" />
     <Compile Include="TimebaseChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,7 +83,6 @@
     <Compile Include="TimeDialog.Designer.cs">
       <DependentUpon>TimeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrendCalculatorFactory.cs" />
     <Compile Include="TrendData.cs" />
     <Compile Include="LineDrawer.cs" />
     <Compile Include="Spectrum.cs" />
