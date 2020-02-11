@@ -33,6 +33,15 @@ namespace _0128_Vibrometer
     partial void InsertChannel(Channel instance);
     partial void UpdateChannel(Channel instance);
     partial void DeleteChannel(Channel instance);
+    partial void InsertWaveData_TB(WaveData_TB instance);
+    partial void UpdateWaveData_TB(WaveData_TB instance);
+    partial void DeleteWaveData_TB(WaveData_TB instance);
+    partial void InsertTrendConfig(TrendConfig instance);
+    partial void UpdateTrendConfig(TrendConfig instance);
+    partial void DeleteTrendConfig(TrendConfig instance);
+    partial void InsertTrendData(TrendData instance);
+    partial void UpdateTrendData(TrendData instance);
+    partial void DeleteTrendData(TrendData instance);
     #endregion
 		
 		public VibrometerDBClassDataContext() : 
@@ -70,6 +79,46 @@ namespace _0128_Vibrometer
 			get
 			{
 				return this.GetTable<Channel>();
+			}
+		}
+		
+		public System.Data.Linq.Table<WaveData_TB> WaveData_TB
+		{
+			get
+			{
+				return this.GetTable<WaveData_TB>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrendConfig> TrendConfig
+		{
+			get
+			{
+				return this.GetTable<TrendConfig>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrendData> TrendData
+		{
+			get
+			{
+				return this.GetTable<TrendData>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PeakConfig> PeakConfig
+		{
+			get
+			{
+				return this.GetTable<PeakConfig>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RmsConfig> RmsConfig
+		{
+			get
+			{
+				return this.GetTable<RmsConfig>();
 			}
 		}
 	}
@@ -180,6 +229,432 @@ namespace _0128_Vibrometer
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WaveData_TB")]
+	public partial class WaveData_TB : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _channel_Id;
+		
+		private System.Nullable<System.TimeSpan> _time;
+		
+		private System.Data.Linq.Binary _data;
+		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void Onchannel_IdChanging(System.Nullable<int> value);
+    partial void Onchannel_IdChanged();
+    partial void OntimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OntimeChanged();
+    partial void OndataChanging(System.Data.Linq.Binary value);
+    partial void OndataChanged();
+    #endregion
+		
+		public WaveData_TB()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_channel_Id", DbType="Int")]
+		public System.Nullable<int> channel_Id
+		{
+			get
+			{
+				return this._channel_Id;
+			}
+			set
+			{
+				if ((this._channel_Id != value))
+				{
+					this.Onchannel_IdChanging(value);
+					this.SendPropertyChanging();
+					this._channel_Id = value;
+					this.SendPropertyChanged("channel_Id");
+					this.Onchannel_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="Time")]
+		public System.Nullable<System.TimeSpan> time
+		{
+			get
+			{
+				return this._time;
+			}
+			set
+			{
+				if ((this._time != value))
+				{
+					this.OntimeChanging(value);
+					this.SendPropertyChanging();
+					this._time = value;
+					this.SendPropertyChanged("time");
+					this.OntimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrendConfig")]
+	public partial class TrendConfig : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public TrendConfig()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrendData")]
+	public partial class TrendData : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _trendConfig_Id;
+		
+		private System.Nullable<System.DateTime> _time;
+		
+		private System.Nullable<double> _value;
+		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OntrendConfig_IdChanging(System.Nullable<int> value);
+    partial void OntrendConfig_IdChanged();
+    partial void OntimeChanging(System.Nullable<System.DateTime> value);
+    partial void OntimeChanged();
+    partial void OnvalueChanging(System.Nullable<double> value);
+    partial void OnvalueChanged();
+    #endregion
+		
+		public TrendData()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trendConfig_Id", DbType="Int")]
+		public System.Nullable<int> trendConfig_Id
+		{
+			get
+			{
+				return this._trendConfig_Id;
+			}
+			set
+			{
+				if ((this._trendConfig_Id != value))
+				{
+					this.OntrendConfig_IdChanging(value);
+					this.SendPropertyChanging();
+					this._trendConfig_Id = value;
+					this.SendPropertyChanged("trendConfig_Id");
+					this.OntrendConfig_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> time
+		{
+			get
+			{
+				return this._time;
+			}
+			set
+			{
+				if ((this._time != value))
+				{
+					this.OntimeChanging(value);
+					this.SendPropertyChanging();
+					this._time = value;
+					this.SendPropertyChanged("time");
+					this.OntimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_value", DbType="Float")]
+		public System.Nullable<double> value
+		{
+			get
+			{
+				return this._value;
+			}
+			set
+			{
+				if ((this._value != value))
+				{
+					this.OnvalueChanging(value);
+					this.SendPropertyChanging();
+					this._value = value;
+					this.SendPropertyChanged("value");
+					this.OnvalueChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PeakConfig")]
+	public partial class PeakConfig
+	{
+		
+		private System.Nullable<int> _option;
+		
+		public PeakConfig()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[option]", Storage="_option", DbType="Int")]
+		public System.Nullable<int> option
+		{
+			get
+			{
+				return this._option;
+			}
+			set
+			{
+				if ((this._option != value))
+				{
+					this._option = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RmsConfig")]
+	public partial class RmsConfig
+	{
+		
+		private System.Nullable<int> _start;
+		
+		private System.Nullable<int> _end;
+		
+		public RmsConfig()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start", DbType="Int")]
+		public System.Nullable<int> start
+		{
+			get
+			{
+				return this._start;
+			}
+			set
+			{
+				if ((this._start != value))
+				{
+					this._start = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[end]", Storage="_end", DbType="Int")]
+		public System.Nullable<int> end
+		{
+			get
+			{
+				return this._end;
+			}
+			set
+			{
+				if ((this._end != value))
+				{
+					this._end = value;
+				}
 			}
 		}
 	}

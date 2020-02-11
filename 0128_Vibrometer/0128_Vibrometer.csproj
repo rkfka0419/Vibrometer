@@ -50,7 +50,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Numerics" />
@@ -106,13 +108,10 @@
     <Compile Include="RandomTrend.cs" />
     <Compile Include="RmsCalculator.cs" />
     <Compile Include="ITrendCalculator.cs" />
-    <Compile Include="VibrometerClass.cs">
-      <DependentUpon>VibrometerClass.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="VibrometerClass.designer.cs">
+    <Compile Include="VibrometerDBClass.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VibrometerClass.dbml</DependentUpon>
+      <DependentUpon>VibrometerDBClass.dbml</DependentUpon>
     </Compile>
     <Compile Include="WaveData.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -149,13 +148,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="VibrometerClass.dbml">
+    <None Include="VibrometerDBClass.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>VibrometerClass.designer.cs</LastGenOutput>
+      <LastGenOutput>VibrometerDBClass.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="VibrometerClass.dbml.layout">
-      <DependentUpon>VibrometerClass.dbml</DependentUpon>
+    <None Include="VibrometerDBClass.dbml.layout">
+      <DependentUpon>VibrometerDBClass.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
