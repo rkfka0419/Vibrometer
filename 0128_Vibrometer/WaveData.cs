@@ -4,6 +4,7 @@ namespace _0128_Vibrometer
 {
     public class WaveData
     {
+        public int channel { get; set; }
         private int samplerate = 0;
         public float[] Data { get; set; }
 

@@ -10,34 +10,31 @@
   <Table Name="dbo.WaveData_TB" Member="WaveData_TB">
     <Type Name="WaveData_TB">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="channel_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="channel_Id" Type="System.Int32" DbType="Int" CanBeNull="false" />
       <Column Name="time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TrendConfig" Member="TrendConfig">
-    <Type Name="TrendConfig">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TrendData" Member="TrendData">
     <Type Name="TrendData">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="trendConfig_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
-      <Column Name="value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="time" Member="Time" Storage="_time" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="value" Member="Value" Storage="_value" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PeakConfig" Member="PeakConfig">
-    <Type Name="PeakConfig">
-      <Column Name="[option]" Member="option" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RmsConfig" Member="RmsConfig">
-    <Type Name="RmsConfig">
-      <Column Name="start" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[end]" Member="end" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.TrendConfig" Member="TrendConfig">
+    <Type Name="TrendConfig" InheritanceCode="1" IsInheritanceDefault="true">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" IsDiscriminator="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Type Name="RmsConfig" InheritanceCode="2">
+        <Column Name="start" Type="System.Int32" DbType="Int" CanBeNull="true" />
+        <Column Name="[end]" Member="end" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      </Type>
+      <Type Name="PeakConfig" InheritanceCode="3">
+        <Column Name="[option]" Member="option" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      </Type>
     </Type>
   </Table>
 </Database>

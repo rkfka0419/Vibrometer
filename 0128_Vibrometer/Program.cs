@@ -12,6 +12,7 @@ namespace _0128_Vibrometer
         static void Main()
         {
             //new TimeDialog().ShowDialog();
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

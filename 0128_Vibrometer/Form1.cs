@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 
 namespace _0128_Vibrometer
 {
@@ -26,27 +27,40 @@ namespace _0128_Vibrometer
             //timer1.Tick += timer1_Tick;
 
 
-            var connectionString = @"Server=.;database=VibrometerDB;uid=sa;password=rootroot;";
-            VibrometerClassDataContext context = new VibrometerClassDataContext(connectionString);
-            Channel cha = new Channel();
-            if (context.DatabaseExists())
+            var connectionString = @"Server=.;database=SimpleCMSDB;uid=sa;password=rootroot;";
+            var db = new VibrometerDBClassDataContext(connectionString);
+            
+            if (!db.DatabaseExists())
             {
+                db.CreateDatabase();
                 Console.WriteLine("database exist");
-                //context.get;
             }
-            //cha.name = "channel2";
-            //cha.sample_rate = 12;
-            //context.Channel.InsertOnSubmit(cha);
+            RmsConfig rms = new RmsConfig();
+            //rms.id = "RMS1"
+            rms.name = "RMS1";
+            rms.start = 0;
+            rms.end = 100;
+            db.TrendConfig.InsertOnSubmit(rms);
+            db.SubmitChanges();
+
+            PeakConfig peak = new PeakConfig();
+            peak.name = "peak";
+            peak.option = "upper";
+            db.TrendConfig.InsertOnSubmit(peak);
+            db.SubmitChanges();
+
+            //PeakConfig peak = new PeakConfig();
+            //peak.name = "peak";
+            //peak.option = "option1";
+            //context.Con
             //context.SubmitChanges();
 
-            RmsConfig rms = new RmsConfig();
-            rms.name = "RMS1";
-            rms.start_Idx = 0;
-            rms.end_Idx = 100;
-            context.RmsConfig.InsertOnSubmit(rms);
-            context.SubmitChanges();
+            var rs = from tmp in db.TrendConfig
+                     where tmp is RmsConfig
+                     select tmp;
 
-
+            var rs2 = db.TrendConfig.OfType<RmsConfig>();
+            var waves = db.WaveData_TB.Select(w=> ToWave(w));
 
 
             lineDrawWave = new LineDrawer(lineWave);
@@ -71,6 +85,15 @@ namespace _0128_Vibrometer
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
         }
         
+        static WaveData ToWave(WaveData_TB w)
+        {
+            WaveData wave = new WaveData();
+            wave.channel = w.channel_Id;
+            //wave.Data = w.data;
+            return new WaveData();
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
         }

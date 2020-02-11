@@ -36,12 +36,12 @@ namespace _0128_Vibrometer
     partial void InsertWaveData_TB(WaveData_TB instance);
     partial void UpdateWaveData_TB(WaveData_TB instance);
     partial void DeleteWaveData_TB(WaveData_TB instance);
-    partial void InsertTrendConfig(TrendConfig instance);
-    partial void UpdateTrendConfig(TrendConfig instance);
-    partial void DeleteTrendConfig(TrendConfig instance);
     partial void InsertTrendData(TrendData instance);
     partial void UpdateTrendData(TrendData instance);
     partial void DeleteTrendData(TrendData instance);
+    partial void InsertTrendConfig(TrendConfig instance);
+    partial void UpdateTrendConfig(TrendConfig instance);
+    partial void DeleteTrendConfig(TrendConfig instance);
     #endregion
 		
 		public VibrometerDBClassDataContext() : 
@@ -90,14 +90,6 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		public System.Data.Linq.Table<TrendConfig> TrendConfig
-		{
-			get
-			{
-				return this.GetTable<TrendConfig>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TrendData> TrendData
 		{
 			get
@@ -106,19 +98,11 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		public System.Data.Linq.Table<PeakConfig> PeakConfig
+		public System.Data.Linq.Table<TrendConfig> TrendConfig
 		{
 			get
 			{
-				return this.GetTable<PeakConfig>();
-			}
-		}
-		
-		public System.Data.Linq.Table<RmsConfig> RmsConfig
-		{
-			get
-			{
-				return this.GetTable<RmsConfig>();
+				return this.GetTable<TrendConfig>();
 			}
 		}
 	}
@@ -241,7 +225,7 @@ namespace _0128_Vibrometer
 		
 		private int _Id;
 		
-		private System.Nullable<int> _channel_Id;
+		private int _channel_Id;
 		
 		private System.Nullable<System.TimeSpan> _time;
 		
@@ -253,7 +237,7 @@ namespace _0128_Vibrometer
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void Onchannel_IdChanging(System.Nullable<int> value);
+    partial void Onchannel_IdChanging(int value);
     partial void Onchannel_IdChanged();
     partial void OntimeChanging(System.Nullable<System.TimeSpan> value);
     partial void OntimeChanged();
@@ -287,7 +271,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_channel_Id", DbType="Int")]
-		public System.Nullable<int> channel_Id
+		public int channel_Id
 		{
 			get
 			{
@@ -367,92 +351,6 @@ namespace _0128_Vibrometer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrendConfig")]
-	public partial class TrendConfig : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Name;
-		
-    #region 확장성 메서드 정의
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    #endregion
-		
-		public TrendConfig()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrendData")]
 	public partial class TrendData : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -475,10 +373,10 @@ namespace _0128_Vibrometer
     partial void OnIdChanged();
     partial void OntrendConfig_IdChanging(System.Nullable<int> value);
     partial void OntrendConfig_IdChanged();
-    partial void OntimeChanging(System.Nullable<System.DateTime> value);
-    partial void OntimeChanged();
-    partial void OnvalueChanging(System.Nullable<double> value);
-    partial void OnvalueChanged();
+    partial void OnTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeChanged();
+    partial void OnValueChanging(System.Nullable<double> value);
+    partial void OnValueChanged();
     #endregion
 		
 		public TrendData()
@@ -526,8 +424,8 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime2")]
-		public System.Nullable<System.DateTime> time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="time", Storage="_time", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> Time
 		{
 			get
 			{
@@ -537,17 +435,17 @@ namespace _0128_Vibrometer
 			{
 				if ((this._time != value))
 				{
-					this.OntimeChanging(value);
+					this.OnTimeChanging(value);
 					this.SendPropertyChanging();
 					this._time = value;
-					this.SendPropertyChanged("time");
-					this.OntimeChanged();
+					this.SendPropertyChanged("Time");
+					this.OnTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_value", DbType="Float")]
-		public System.Nullable<double> value
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="value", Storage="_value", DbType="Float")]
+		public System.Nullable<double> Value
 		{
 			get
 			{
@@ -557,11 +455,11 @@ namespace _0128_Vibrometer
 			{
 				if ((this._value != value))
 				{
-					this.OnvalueChanging(value);
+					this.OnValueChanging(value);
 					this.SendPropertyChanging();
 					this._value = value;
-					this.SendPropertyChanged("value");
-					this.OnvalueChanged();
+					this.SendPropertyChanged("Value");
+					this.OnValueChanged();
 				}
 			}
 		}
@@ -587,43 +485,139 @@ namespace _0128_Vibrometer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PeakConfig")]
-	public partial class PeakConfig
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrendConfig")]
+	[global::System.Data.Linq.Mapping.InheritanceMappingAttribute(Code="1", Type=typeof(TrendConfig), IsDefault=true)]
+	[global::System.Data.Linq.Mapping.InheritanceMappingAttribute(Code="2", Type=typeof(RmsConfig))]
+	[global::System.Data.Linq.Mapping.InheritanceMappingAttribute(Code="3", Type=typeof(PeakConfig))]
+	public partial class TrendConfig : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private System.Nullable<int> _option;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		public PeakConfig()
+		private int _Id;
+		
+		private System.Nullable<int> _type;
+		
+		private string _name;
+		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OntypeChanging(System.Nullable<int> value);
+    partial void OntypeChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public TrendConfig()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[option]", Storage="_option", DbType="Int")]
-		public System.Nullable<int> option
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._option;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._option != value))
+				if ((this._Id != value))
 				{
-					this._option = value;
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int", IsDiscriminator=true)]
+		public System.Nullable<int> type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RmsConfig")]
-	public partial class RmsConfig
+	public partial class RmsConfig : TrendConfig
 	{
 		
 		private System.Nullable<int> _start;
 		
 		private System.Nullable<int> _end;
 		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnstartChanging(System.Nullable<int> value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.Nullable<int> value);
+    partial void OnendChanged();
+    #endregion
+		
 		public RmsConfig()
 		{
+			OnCreated();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start", DbType="Int")]
@@ -637,7 +631,11 @@ namespace _0128_Vibrometer
 			{
 				if ((this._start != value))
 				{
+					this.OnstartChanging(value);
+					this.SendPropertyChanging();
 					this._start = value;
+					this.SendPropertyChanged("start");
+					this.OnstartChanged();
 				}
 			}
 		}
@@ -653,7 +651,50 @@ namespace _0128_Vibrometer
 			{
 				if ((this._end != value))
 				{
+					this.OnendChanging(value);
+					this.SendPropertyChanging();
 					this._end = value;
+					this.SendPropertyChanged("end");
+					this.OnendChanged();
+				}
+			}
+		}
+	}
+	
+	public partial class PeakConfig : TrendConfig
+	{
+		
+		private string _option;
+		
+    #region 확장성 메서드 정의
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnoptionChanging(string value);
+    partial void OnoptionChanged();
+    #endregion
+		
+		public PeakConfig()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[option]", Storage="_option", DbType="VarChar(50)")]
+		public string option
+		{
+			get
+			{
+				return this._option;
+			}
+			set
+			{
+				if ((this._option != value))
+				{
+					this.OnoptionChanging(value);
+					this.SendPropertyChanging();
+					this._option = value;
+					this.SendPropertyChanged("option");
+					this.OnoptionChanged();
 				}
 			}
 		}

@@ -108,6 +108,9 @@
     <Compile Include="RandomTrend.cs" />
     <Compile Include="RmsCalculator.cs" />
     <Compile Include="ITrendCalculator.cs" />
+    <Compile Include="VibrometerDBClass.cs">
+      <DependentUpon>VibrometerDBClass.dbml</DependentUpon>
+    </Compile>
     <Compile Include="VibrometerDBClass.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
