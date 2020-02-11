@@ -21,14 +21,14 @@ namespace _0128_Vibrometer
 
         public TrendData GetTrend(WaveData wave, float[] spectrum)
         {
-            TrendData trendData;
+            TrendData trendData = new TrendData();
             trendData.Time = DateTime.Now;
             trendData.Value = new Random().Next((int)wave.Data.Min(), (int)wave.Data.Max());
             return trendData;
         }
         public TrendData GetTrend(float[] data)
         {
-            TrendData trendData;
+            TrendData trendData = new TrendData();
             trendData.Time = DateTime.Now;
             trendData.Value = new Random().Next((int)data.Min(), (int)data.Max());
             return trendData;

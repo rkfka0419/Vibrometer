@@ -71,6 +71,14 @@ namespace _0128_Vibrometer
             }
             line.Add(point);
         }
+        public void DrawLine(double? point, bool isClear = false)
+        {
+            if (isClear == true)
+            {
+                line.Clear();
+            }
+            line.Add(point);
+        }
         public void DrawLine(string title, float point, bool isClear = false)
         {
             if (isClear == true)
@@ -84,7 +92,8 @@ namespace _0128_Vibrometer
         public TrendData DrawLine(WaveData wave, Spectrum spectrum, ITrendCalculator calc, bool isClear = false)
         {
             this.line.Title = calc.title;
-            TrendData trendData = calc.GetTrend(wave, spectrum.fft);
+            TrendData trendData = new TrendData();
+            trendData = calc.GetTrend(wave, spectrum.fft);
             DrawLine(trendData.Value, isClear);
             return trendData;
         }

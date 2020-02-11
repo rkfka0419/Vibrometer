@@ -35,7 +35,7 @@ namespace _0128_Vibrometer
             mean = (float)square / wave.Data.Length;
             root = (float)Math.Sqrt(mean);
 
-            TrendData trendData;
+            TrendData trendData = new TrendData();
             trendData.Value = root;
             trendData.Time = DateTime.Now;
             return trendData;

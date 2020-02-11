@@ -71,6 +71,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_UI.Designer.cs">
+      <DependentUpon>Form_UI.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimebaseChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="WaveData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_UI.resx">
+      <DependentUpon>Form_UI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LineDraw.resx">
       <DependentUpon>LineDrawer.cs</DependentUpon>

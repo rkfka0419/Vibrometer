@@ -28,14 +28,22 @@ namespace _0128_Vibrometer
 
             var connectionString = @"Server=.;database=VibrometerDB;uid=sa;password=rootroot;";
             VibrometerClassDataContext context = new VibrometerClassDataContext(connectionString);
-            channel cha = new channel();
+            Channel cha = new Channel();
             if (context.DatabaseExists())
             {
-                Console.WriteLine("data exist");
-                context.g;
+                Console.WriteLine("database exist");
+                //context.get;
             }
-            cha.name = "channel1";
-            cha.sample_rate = 5;
+            //cha.name = "channel2";
+            //cha.sample_rate = 12;
+            //context.Channel.InsertOnSubmit(cha);
+            //context.SubmitChanges();
+
+            RmsConfig rms = new RmsConfig();
+            rms.name = "RMS1";
+            rms.start_Idx = 0;
+            rms.end_Idx = 100;
+            context.RmsConfig.InsertOnSubmit(rms);
             context.SubmitChanges();
 
 

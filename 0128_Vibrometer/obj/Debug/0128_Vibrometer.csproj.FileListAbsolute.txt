@@ -23,3 +23,4 @@ C:\Users\rkfka\source\repos\0128_Vibrometer\0128_Vibrometer\bin\Debug\Newtonsoft
 C:\Users\rkfka\source\repos\0128_Vibrometer\0128_Vibrometer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\rkfka\source\repos\0128_Vibrometer\0128_Vibrometer\obj\Debug\_0128_Vibrometer.TimebaseChart.resources
 C:\Users\rkfka\source\repos\0128_Vibrometer\0128_Vibrometer\obj\Debug\_0128_Vibrometer.TimeDialog.resources
+C:\Users\rkfka\source\repos\0128_Vibrometer\0128_Vibrometer\obj\Debug\_0128_Vibrometer.Form_UI.resources

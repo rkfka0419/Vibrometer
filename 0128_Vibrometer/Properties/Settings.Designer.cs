@@ -32,5 +32,16 @@ namespace _0128_Vibrometer.Properties {
                 return ((string)(this["ormtestConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=VibrometerDB;Persist Security Info=True;User ID=sa;" +
+            "Password=rootroot")]
+        public string VibrometerDBConnectionString {
+            get {
+                return ((string)(this["VibrometerDBConnectionString"]));
+            }
+        }
     }
 }
