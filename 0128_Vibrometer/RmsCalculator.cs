@@ -35,9 +35,12 @@ namespace _0128_Vibrometer
             mean = (float)square / wave.data.Length;
             root = (float)Math.Sqrt(mean);
 
+            var id = title;
+
             TrendData trendData = new TrendData();
             trendData.Value = root;
-            trendData.Time = DateTime.Now;
+            trendData.Time = wave.time;
+            //trendData.Id = title;
             return trendData;
         }
     }

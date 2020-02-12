@@ -36,31 +36,28 @@ namespace _0128_Vibrometer
                     db.CreateDatabase();
                     Console.WriteLine("database created.");
                 }
-                //var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
-                //trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
+                var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+                trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
 
-                //RmsConfig rmsConfig1 = new RmsConfig();
-                //rmsConfig1.name = "RMS1";
-                //rmsConfig1.start = 100;
-                //rmsConfig1.end = 1000;
-                //db.TrendConfig.InsertOnSubmit(rmsConfig1);
-                //db.SubmitChanges();
+                RmsConfig rmsConfig1 = new RmsConfig();
+                rmsConfig1.name = "RMS1";
+                rmsConfig1.start = 100;
+                rmsConfig1.end = 1000;
+                db.TrendConfig.InsertOnSubmit(rmsConfig1);
+                db.SubmitChanges();
 
-                //RmsConfig rmsConfig2 = new RmsConfig();
-                //rmsConfig2.name = "RMS2";
-                //rmsConfig2.start = 1000;
-                //rmsConfig2.end = 4000;
-                //db.TrendConfig.InsertOnSubmit(rmsConfig2);
-                //db.SubmitChanges();
+                RmsConfig rmsConfig2 = new RmsConfig();
+                rmsConfig2.name = "RMS2";
+                rmsConfig2.start = 1000;
+                rmsConfig2.end = 4000;
+                db.TrendConfig.InsertOnSubmit(rmsConfig2);
+                db.SubmitChanges();
 
-                //PeakConfig peakConfig = new PeakConfig();
-                //peakConfig.name = "Peak1";
-                //peakConfig.option = "upper";
-                //db.TrendConfig.InsertOnSubmit(peakConfig);
-                //db.SubmitChanges();
-
-
-
+                PeakConfig peakConfig = new PeakConfig();
+                peakConfig.name = "Peak1";
+                peakConfig.option = "upper";
+                db.TrendConfig.InsertOnSubmit(peakConfig);
+                db.SubmitChanges();
             }
 
 
@@ -120,28 +117,41 @@ namespace _0128_Vibrometer
             
             using (var db = new VibrometerDBClassDataContext(connectionString))
             {
+
+                //var rmsConfig = from trendType in db.TrendConfig
+                //              where trendType is RmsConfig
+                //              select trendType;
+                //foreach (var line in rmsConfig)
+                //{
+                //    TrendData trendData = new TrendData();
+                //    trendData = line.CalTrend(wave, spectrum);
+                //    db.TrendData.InsertOnSubmit(trendData);
+                //    db.SubmitChanges();
+                //}
+                //var peakConfig = from trendType in db.TrendConfig
+                //                 where trendType is PeakConfig
+                //                 select trendType;
+                //foreach (var line in peakConfig)
+                //{
+                //    TrendData trendData = new TrendData();
+                //    trendData = line.CalTrend(wave, spectrum);
+                //    db.TrendData.InsertOnSubmit(trendData);
+                //    db.SubmitChanges();
+                //}
+
+
                 db.WaveData.InsertOnSubmit(wave);
+
+
+                var rmss = db.TrendConfig.OfType<RmsConfig>().Select(rms => rms.CalTrend(wave, spectrum));
+                db.TrendData.InsertAllOnSubmit(rmss);
+
+                var peaks = db.TrendData.OfType<PeakConfig>().Select(peak => peak.CalTrend(wave, spectrum));
+                db.TrendData.InsertAllOnSubmit(peaks);
+
+                var trends = db.TrendConfig.Select(peak => peak.CalTrend(wave, spectrum));
+
                 db.SubmitChanges();
-                var rmsConfig = from trendType in db.TrendConfig
-                              where trendType is RmsConfig
-                              select trendType;
-                foreach (var line in rmsConfig)
-                {
-                    TrendData trendData = new TrendData();
-                    trendData = line.CalTrend(wave, spectrum);
-                    db.TrendData.InsertOnSubmit(trendData);
-                    db.SubmitChanges();
-                }
-                var peakConfig = from trendType in db.TrendConfig
-                              where trendType is PeakConfig
-                              select trendType;
-                foreach (var line in peakConfig)
-                {
-                    TrendData trendData = new TrendData();
-                    trendData = line.CalTrend(wave, spectrum);
-                    db.TrendData.InsertOnSubmit(trendData);
-                    db.SubmitChanges();
-                }
 
             }
 
@@ -151,7 +161,6 @@ namespace _0128_Vibrometer
                 //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
                 lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
             }
-
         }
     }
 }
