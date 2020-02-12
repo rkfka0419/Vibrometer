@@ -23,7 +23,7 @@ namespace _0128_Vibrometer
         {
             TrendData trendData = new TrendData();
             trendData.Time = DateTime.Now;
-            trendData.Value = new Random().Next((int)wave.Data.Min(), (int)wave.Data.Max());
+            trendData.Value = new Random().Next((int)wave.data.Min(), (int)wave.data.Max());
             return trendData;
         }
         public TrendData GetTrend(float[] data)

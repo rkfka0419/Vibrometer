@@ -4,14 +4,14 @@
     <Type Name="Channel">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sample_rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sample_rate" Type="System.Int32" DbType="Int" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.WaveData_TB" Member="WaveData_TB">
-    <Type Name="WaveData_TB">
+  <Table Name="dbo.WaveData_TB" Member="WaveData">
+    <Type Name="WaveData">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="channel_Id" Type="System.Int32" DbType="Int" CanBeNull="false" />
-      <Column Name="time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="time" Type="System.DateTime" DbType="Time" CanBeNull="true" />
       <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>

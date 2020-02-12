@@ -8,27 +8,27 @@ namespace _0128_Vibrometer
         
         public void GetFFT(WaveData wave, bool isPositiveFFT = true)
         {
-            int arrayLength = wave.Data.Length / 2;
+            int arrayLength = wave.data.Length / 2;
             if (isPositiveFFT == false)
                 arrayLength *= 2;
 
             WaveData waveFFT = new WaveData();
 
-            waveFFT.Data = new float[arrayLength];
+            waveFFT.data = new float[arrayLength];
             //float[] fft = new float[data.Length]; // this is where we will store the output (fft)
-            Complex[] fftComplex = new Complex[wave.Data.Length]; // the FFT function requires complex format
+            Complex[] fftComplex = new Complex[wave.data.Length]; // the FFT function requires complex format
             for (int i = 0; i < arrayLength; i++)
             {
-                fftComplex[i] = new Complex(wave.Data[i], 0.0); // make it complex format (imaginary = 0)
+                fftComplex[i] = new Complex(wave.data[i], 0.0); // make it complex format (imaginary = 0)
             }
             Accord.Math.FourierTransform.FFT(fftComplex, Accord.Math.FourierTransform.Direction.Forward);
             for (int i = 0; i < arrayLength; i++)
             {
-                waveFFT.Data[i] = (float)fftComplex[i].Magnitude; // back to double
+                waveFFT.data[i] = (float)fftComplex[i].Magnitude; // back to double
                 if (isPositiveFFT == true)
-                    waveFFT.Data[i] *= 2;
+                    waveFFT.data[i] *= 2;
             }
-            this.fft = waveFFT.Data;
+            this.fft = waveFFT.data;
         }
         
         public static float[] FFTToDecibel(float[] fft)

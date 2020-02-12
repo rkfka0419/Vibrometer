@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NAudio.Wave; // installed with nuget
+using System.Linq;
 
 namespace _0128_Vibrometer
 {
@@ -31,6 +32,8 @@ namespace _0128_Vibrometer
         {
             try
             {
+                //버퍼를 밀어넣고
+
                 for (int i = 0; i < e.BytesRecorded; i += 2)
                 {
                     Int16 val = BitConverter.ToInt16(e.Buffer, i);
@@ -42,14 +45,15 @@ namespace _0128_Vibrometer
                 if (sampleQueue.Count >= SAMPLE_RATE)
                 {
                     this.wave = new WaveData();
-                    wave.Data = new float[SAMPLE_RATE];
-                    for (int i = 0; i < wave.Data.Length; i++)
+                    wave.data = new float[SAMPLE_RATE];
+                    for (int i = 0; i < wave.data.Length; i++)
                     {
-                        wave.Data[i] = sampleQueue.Dequeue();
+                        wave.data[i] = sampleQueue.Dequeue();
                     }
                     sampleQueue.Clear();
                     OnReceivedWaveData(wave);
                 }
+
             }
 
             catch (Exception error)

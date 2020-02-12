@@ -48,7 +48,7 @@ namespace _0128_Vibrometer
         }
         public float GetPeakToPeak(WaveData wave)
         {
-            return GetPeakToPeak(wave.Data);
+            return GetPeakToPeak(wave.data);
         }
         //Get Peak
         public float GetUpperPeak(float[] data)
@@ -57,15 +57,15 @@ namespace _0128_Vibrometer
         }
         public float GetUpperPeak(WaveData wave)
         {
-            return GetUpperPeak(wave.Data);
+            return GetUpperPeak(wave.data);
         }
-        public float GetLowerPeak(float[] data)
+        public float GetLowerPeak(float[] data)ㄴ
         {
             return data.Min();
         }
         public float GetLowerPeak(WaveData wave)
         {
-            return GetLowerPeak(wave.Data);
+            return GetLowerPeak(wave.data);
         }
         public float GetPeak(float[] data)
         {
@@ -75,7 +75,7 @@ namespace _0128_Vibrometer
         }
         public float GetPeak(WaveData wave)
         {
-            return GetPeak(wave.Data);
+            return GetPeak(wave.data);
         }
     }
 }

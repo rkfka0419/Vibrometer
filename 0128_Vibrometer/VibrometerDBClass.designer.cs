@@ -33,9 +33,9 @@ namespace _0128_Vibrometer
     partial void InsertChannel(Channel instance);
     partial void UpdateChannel(Channel instance);
     partial void DeleteChannel(Channel instance);
-    partial void InsertWaveData_TB(WaveData_TB instance);
-    partial void UpdateWaveData_TB(WaveData_TB instance);
-    partial void DeleteWaveData_TB(WaveData_TB instance);
+    partial void InsertWaveData(WaveData instance);
+    partial void UpdateWaveData(WaveData instance);
+    partial void DeleteWaveData(WaveData instance);
     partial void InsertTrendData(TrendData instance);
     partial void UpdateTrendData(TrendData instance);
     partial void DeleteTrendData(TrendData instance);
@@ -82,11 +82,11 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		public System.Data.Linq.Table<WaveData_TB> WaveData_TB
+		public System.Data.Linq.Table<WaveData> WaveData
 		{
 			get
 			{
-				return this.GetTable<WaveData_TB>();
+				return this.GetTable<WaveData>();
 			}
 		}
 		
@@ -117,7 +117,7 @@ namespace _0128_Vibrometer
 		
 		private string _name;
 		
-		private System.Nullable<int> _sample_rate;
+		private int _sample_rate;
 		
     #region 확장성 메서드 정의
     partial void OnLoaded();
@@ -127,7 +127,7 @@ namespace _0128_Vibrometer
     partial void OnIdChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
-    partial void Onsample_rateChanging(System.Nullable<int> value);
+    partial void Onsample_rateChanging(int value);
     partial void Onsample_rateChanged();
     #endregion
 		
@@ -177,7 +177,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sample_rate", DbType="Int")]
-		public System.Nullable<int> sample_rate
+		public int sample_rate
 		{
 			get
 			{
@@ -218,7 +218,7 @@ namespace _0128_Vibrometer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WaveData_TB")]
-	public partial class WaveData_TB : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class WaveData : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -227,7 +227,7 @@ namespace _0128_Vibrometer
 		
 		private int _channel_Id;
 		
-		private System.Nullable<System.TimeSpan> _time;
+		private System.Nullable<System.DateTime> _time;
 		
 		private System.Data.Linq.Binary _data;
 		
@@ -239,13 +239,13 @@ namespace _0128_Vibrometer
     partial void OnIdChanged();
     partial void Onchannel_IdChanging(int value);
     partial void Onchannel_IdChanged();
-    partial void OntimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OntimeChanging(System.Nullable<System.DateTime> value);
     partial void OntimeChanged();
     partial void OndataChanging(System.Data.Linq.Binary value);
     partial void OndataChanged();
     #endregion
 		
-		public WaveData_TB()
+		public WaveData()
 		{
 			OnCreated();
 		}
@@ -291,7 +291,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="Time")]
-		public System.Nullable<System.TimeSpan> time
+		public System.Nullable<System.DateTime> time
 		{
 			get
 			{

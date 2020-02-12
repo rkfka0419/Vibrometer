@@ -55,12 +55,12 @@ namespace _0128_Vibrometer
             //context.Con
             //context.SubmitChanges();
 
-            var rs = from tmp in db.TrendConfig
-                     where tmp is RmsConfig
-                     select tmp;
+            //var rs = from tmp in db.TrendConfig
+            //         where tmp is RmsConfig
+            //         select tmp;
 
-            var rs2 = db.TrendConfig.OfType<RmsConfig>();
-            var waves = db.WaveData_TB.Select(w=> ToWave(w));
+            //var rs2 = db.TrendConfig.OfType<RmsConfig>();
+            //var waves = db.WaveData_TB.Select(w=> ToWave(w));
 
 
             lineDrawWave = new LineDrawer(lineWave);
@@ -83,14 +83,6 @@ namespace _0128_Vibrometer
             micControll = new MicControll();
             micControll.StartRecording();
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
-        }
-        
-        static WaveData ToWave(WaveData_TB w)
-        {
-            WaveData wave = new WaveData();
-            wave.channel = w.channel_Id;
-            //wave.Data = w.data;
-            return new WaveData();
         }
 
 

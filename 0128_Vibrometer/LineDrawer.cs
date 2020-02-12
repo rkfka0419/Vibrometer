@@ -61,7 +61,7 @@ namespace _0128_Vibrometer
         public void DrawLine(WaveData wave, bool isClear = false)
         {
             //Draw wave Graph
-            DrawLine(wave.Data, isClear);
+            DrawLine(wave.data, isClear);
         }
         public void DrawLine(float point, bool isClear = false)
         {
