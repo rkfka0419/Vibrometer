@@ -5,29 +5,25 @@
       "$type": "_0128_Vibrometer.RmsCalculator, 0128_Vibrometer",
       "start": 10,
       "end": 500,
-      "title": "RMS1",
-      "option": null
+      "title": "RMS1"
     },
     {
       "$type": "_0128_Vibrometer.RmsCalculator, 0128_Vibrometer",
       "start": 500,
       "end": 1000,
-      "title": "RMS2",
-      "option": null
+      "title": "RMS2"
     },
     {
       "$type": "_0128_Vibrometer.RmsCalculator, 0128_Vibrometer",
       "start": 1000,
       "end": 2000,
-      "title": "RMS3",
-      "option": null
+      "title": "RMS3"
     },
     {
       "$type": "_0128_Vibrometer.RmsCalculator, 0128_Vibrometer",
       "start": 2000,
       "end": 4000,
-      "title": "RMS4",
-      "option": null
+      "title": "RMS4"
     },
     {
       "$type": "_0128_Vibrometer.PeakCalculator, 0128_Vibrometer",
@@ -38,11 +34,6 @@
       "$type": "_0128_Vibrometer.PeakCalculator, 0128_Vibrometer",
       "title": "Peak2",
       "option": "lower"
-    },
-    {
-      "$type": "_0128_Vibrometer.RandomTrend, 0128_Vibrometer",
-      "title": "Random",
-      "option": "random"
     }
   ]
 }

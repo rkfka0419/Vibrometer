@@ -136,7 +136,7 @@ namespace _0128_Vibrometer
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -156,7 +156,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name")]
 		public string name
 		{
 			get
@@ -176,7 +176,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sample_rate", DbType="Int")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sample_rate")]
 		public int sample_rate
 		{
 			get
@@ -227,6 +227,8 @@ namespace _0128_Vibrometer
 		
 		private int _channel_Id;
 		
+		private System.DateTime _time;
+		
 		private System.Data.Linq.Binary _data;
 		
     #region 확장성 메서드 정의
@@ -237,6 +239,8 @@ namespace _0128_Vibrometer
     partial void OnIdChanged();
     partial void Onchannel_IdChanging(int value);
     partial void Onchannel_IdChanged();
+    partial void OntimeChanging(System.DateTime value);
+    partial void OntimeChanged();
     partial void OndataChanging(System.Data.Linq.Binary value);
     partial void OndataChanged();
     #endregion
@@ -246,7 +250,7 @@ namespace _0128_Vibrometer
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -282,6 +286,26 @@ namespace _0128_Vibrometer
 					this._channel_Id = value;
 					this.SendPropertyChanged("channel_Id");
 					this.Onchannel_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time")]
+		public System.DateTime time
+		{
+			get
+			{
+				return this._time;
+			}
+			set
+			{
+				if ((this._time != value))
+				{
+					this.OntimeChanging(value);
+					this.SendPropertyChanging();
+					this._time = value;
+					this.SendPropertyChanged("time");
+					this.OntimeChanged();
 				}
 			}
 		}
@@ -360,7 +384,7 @@ namespace _0128_Vibrometer
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -400,7 +424,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="time", Storage="_time", DbType="DateTime2")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="time", Storage="_time")]
 		public System.DateTime Time
 		{
 			get
@@ -493,7 +517,7 @@ namespace _0128_Vibrometer
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -533,7 +557,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", CanBeNull=false)]
 		public string name
 		{
 			get
@@ -577,17 +601,17 @@ namespace _0128_Vibrometer
 	public partial class RmsConfig : TrendConfig
 	{
 		
-		private System.Nullable<int> _start;
+		private int _start;
 		
-		private System.Nullable<int> _end;
+		private int _end;
 		
     #region 확장성 메서드 정의
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnstartChanging(System.Nullable<int> value);
+    partial void OnstartChanging(int value);
     partial void OnstartChanged();
-    partial void OnendChanging(System.Nullable<int> value);
+    partial void OnendChanging(int value);
     partial void OnendChanged();
     #endregion
 		
@@ -597,7 +621,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start", DbType="Int")]
-		public System.Nullable<int> start
+		public int start
 		{
 			get
 			{
@@ -616,8 +640,8 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[end]", Storage="_end", DbType="Int")]
-		public System.Nullable<int> end
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_end", DbType="Int")]
+		public int end
 		{
 			get
 			{
@@ -655,7 +679,7 @@ namespace _0128_Vibrometer
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[option]", Storage="_option", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_option")]
 		public string option
 		{
 			get

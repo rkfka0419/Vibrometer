@@ -13,6 +13,7 @@ namespace _0128_Vibrometer
         LineDrawer lineDrawWave;
         LineDrawer lineDrawFFT;
         const string CONFIG_FILE_PATH = @"config.json";
+        const string connectionString = @"Server=.;database=SimpleCMSDB;uid=sa;password=rootroot;";
 
         //파일에서 입력받아 저장할 LineDraw 클래스 리스트
         List<LineDrawer> lineDrawerList = new List<LineDrawer>();
@@ -25,22 +26,44 @@ namespace _0128_Vibrometer
             InitializeComponent();
             //timer1.Interval = 1000;
             //timer1.Tick += timer1_Tick;
-
-
-            var connectionString = @"Server=.;database=SimpleCMSDB;uid=sa;password=rootroot;";
-            var db = new VibrometerDBClassDataContext(connectionString);
-            
-            if (!db.DatabaseExists())
-            {
-                db.CreateDatabase();
-                Console.WriteLine("database created.");
-            }
-
             lineDrawWave = new LineDrawer(lineWave);
             lineDrawFFT = new LineDrawer(lineFFT);
 
-            var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
-            trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
+            using (var db = new VibrometerDBClassDataContext(connectionString))
+            {
+                if (!db.DatabaseExists())
+                {
+                    db.CreateDatabase();
+                    Console.WriteLine("database created.");
+                }
+                //var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+                //trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
+
+                //RmsConfig rmsConfig1 = new RmsConfig();
+                //rmsConfig1.name = "RMS1";
+                //rmsConfig1.start = 100;
+                //rmsConfig1.end = 1000;
+                //db.TrendConfig.InsertOnSubmit(rmsConfig1);
+                //db.SubmitChanges();
+
+                //RmsConfig rmsConfig2 = new RmsConfig();
+                //rmsConfig2.name = "RMS2";
+                //rmsConfig2.start = 1000;
+                //rmsConfig2.end = 4000;
+                //db.TrendConfig.InsertOnSubmit(rmsConfig2);
+                //db.SubmitChanges();
+
+                //PeakConfig peakConfig = new PeakConfig();
+                //peakConfig.name = "Peak1";
+                //peakConfig.option = "upper";
+                //db.TrendConfig.InsertOnSubmit(peakConfig);
+                //db.SubmitChanges();
+
+
+
+            }
+
+
 
             //var jsonStr = JsonConvert.SerializeObject(calculators, Newtonsoft.Json.Formatting.Indented, setting);
             ////Console.WriteLine(jsonStr);
@@ -84,21 +107,50 @@ namespace _0128_Vibrometer
         }
         private void micControll_OnReceivedWaveData(WaveData wave)
         {
-            //Draw Wave
-            lineDrawWave.DrawLine(wave, true);
-
             //Calculate Spectrum data from wave
             Spectrum spectrum = new Spectrum();
             spectrum.GetFFT(wave);
+
+            //Draw Wave
+            lineDrawWave.DrawLine(wave, true);
+
             //Draw FFT wave
             lineDrawFFT.DrawLine(spectrum.fft, true);
+
             
-            //for (int i = 0; i < trendCalculator.Length; i++)
-            //{
-            //    //TrendData trendData = trendCalculator[i].GetTrend(wave, spectrum.fft);
-            //    //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
-            //    lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
-            //}
+            using (var db = new VibrometerDBClassDataContext(connectionString))
+            {
+                db.WaveData.InsertOnSubmit(wave);
+                db.SubmitChanges();
+                var rmsConfig = from trendType in db.TrendConfig
+                              where trendType is RmsConfig
+                              select trendType;
+                foreach (var line in rmsConfig)
+                {
+                    TrendData trendData = new TrendData();
+                    trendData = line.CalTrend(wave, spectrum);
+                    db.TrendData.InsertOnSubmit(trendData);
+                    db.SubmitChanges();
+                }
+                var peakConfig = from trendType in db.TrendConfig
+                              where trendType is PeakConfig
+                              select trendType;
+                foreach (var line in peakConfig)
+                {
+                    TrendData trendData = new TrendData();
+                    trendData = line.CalTrend(wave, spectrum);
+                    db.TrendData.InsertOnSubmit(trendData);
+                    db.SubmitChanges();
+                }
+
+            }
+
+            for (int i = 0; i < trendCalculator.Length; i++)
+            {
+                //TrendData trendData = trendCalculator[i].GetTrend(wave, spectrum.fft);
+                //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
+                lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
+            }
 
         }
     }

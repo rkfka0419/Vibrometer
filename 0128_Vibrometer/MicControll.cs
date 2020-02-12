@@ -12,6 +12,7 @@ namespace _0128_Vibrometer
         private int SAMPLE_RATE = (int)(Math.Pow(2, 13)); // sample rate of the sound card
         Queue<float> sampleQueue = new Queue<float>();
         Queue<Byte> samplingQueue = new Queue<Byte>();
+        public event Action<WaveData> OnReceivedWaveData;
 
         public MicControll()
         {
@@ -33,25 +34,24 @@ namespace _0128_Vibrometer
         {
             try
             {
-                byte[] buffer = new byte[SAMPLE_RATE * 2];
+                int BUFFER_SIZE = SAMPLE_RATE * 2;
+                byte[] buffer = new byte[BUFFER_SIZE];
 
                 for (int i = 0; i < e.BytesRecorded; i++)
                 {
                     samplingQueue.Enqueue(e.Buffer[i]);
                 }
 
-                if (samplingQueue.Count >= SAMPLE_RATE * 2)
+                if (samplingQueue.Count >= BUFFER_SIZE)
                 {
-                    for (int i=0; i<buffer.Length; i++)
+                    for (int i = 0; i < buffer.Length; i++)
                     {
                         buffer[i] = samplingQueue.Dequeue();
                     }
 
                     WaveData wave = new WaveData();
                     wave.channel_Id = wi.DeviceNumber;
-                    //wave.time = DateTime.Now;
-                    //Console.WriteLine(DateTime.Now.ToString("hh:mm:ss"));
-                    //Console.WriteLine(wave.time);
+                    wave.time = DateTime.Now;
                     wave.data = buffer;
 
                     wave.Floats = new float[SAMPLE_RATE];
@@ -64,11 +64,6 @@ namespace _0128_Vibrometer
                     {
                         wave.Floats[i] = sampleQueue.Dequeue();
                     }
-
-                    var connectionString = @"Server=.;database=SimpleCMSDB;uid=sa;password=rootroot;";
-                    var db = new VibrometerDBClassDataContext(connectionString);
-                    db.WaveData.InsertOnSubmit(wave);
-                    db.SubmitChanges();
                     samplingQueue.Clear();
                     OnReceivedWaveData(wave);
                 }
@@ -99,7 +94,6 @@ namespace _0128_Vibrometer
                 Console.WriteLine(error.ToString());
             }
         }
-        public event Action<WaveData> OnReceivedWaveData;
         public void StartRecording()
         {
             wi.StartRecording();

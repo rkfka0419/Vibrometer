@@ -8,10 +8,10 @@
         <elementListCompartment Id="f0dc646b-8298-4a00-a25b-1f66f00e9498" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f7eb198a-b2cd-405a-9d36-b6d0d18a3748" absoluteBounds="2.75, 0.5, 2, 1.3862939453125">
+    <classShape Id="f7eb198a-b2cd-405a-9d36-b6d0d18a3748" absoluteBounds="2.75, 0.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/VibrometerDBClassDataContext/WaveData" />
       <nestedChildShapes>
-        <elementListCompartment Id="6b7f41ba-bf4d-49ff-ad55-49164410d9ce" absoluteBounds="2.765, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6b7f41ba-bf4d-49ff-ad55-49164410d9ce" absoluteBounds="2.765, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="ee9aebac-97fa-4feb-b4a9-20000bee2fe5" absoluteBounds="2.875, 2.5, 2, 1.5785953776041666">

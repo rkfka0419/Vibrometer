@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 
 namespace _0128_Vibrometer
 {
+
     partial class TrendData
     {
     }
@@ -62,9 +64,25 @@ namespace _0128_Vibrometer
 
         public override TrendData CalTrend(WaveData wave, Spectrum spectrum)
         {
-            return new TrendData();
+            
+            RmsCalculator peak = new RmsCalculator(name, start, end);
+            TrendData trendData = new TrendData();
+            trendData.trendConfig_Id = this.Id;
+            trendData = peak.GetTrend(wave, spectrum.fft);
+            return trendData;
         }
 
+    }
+    partial class PeakConfig : TrendConfig
+    {
+        public override TrendData CalTrend(WaveData wave, Spectrum spectrum)
+        {
+            PeakCalculator peak = new PeakCalculator(name, option);
+            TrendData trendData = new TrendData();
+            trendData.trendConfig_Id = this.Id;
+            trendData = peak.GetTrend(wave, spectrum.fft);
+            return trendData;
+        }
     }
 
 
