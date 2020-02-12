@@ -227,8 +227,6 @@ namespace _0128_Vibrometer
 		
 		private int _channel_Id;
 		
-		private System.Nullable<System.DateTime> _time;
-		
 		private System.Data.Linq.Binary _data;
 		
     #region 확장성 메서드 정의
@@ -239,8 +237,6 @@ namespace _0128_Vibrometer
     partial void OnIdChanged();
     partial void Onchannel_IdChanging(int value);
     partial void Onchannel_IdChanged();
-    partial void OntimeChanging(System.Nullable<System.DateTime> value);
-    partial void OntimeChanged();
     partial void OndataChanging(System.Data.Linq.Binary value);
     partial void OndataChanged();
     #endregion
@@ -290,27 +286,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="Time")]
-		public System.Nullable<System.DateTime> time
-		{
-			get
-			{
-				return this._time;
-			}
-			set
-			{
-				if ((this._time != value))
-				{
-					this.OntimeChanging(value);
-					this.SendPropertyChanging();
-					this._time = value;
-					this.SendPropertyChanged("time");
-					this.OntimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarBinary(MAX)", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary data
 		{
 			get
@@ -359,11 +335,11 @@ namespace _0128_Vibrometer
 		
 		private int _Id;
 		
-		private System.Nullable<int> _trendConfig_Id;
+		private int _trendConfig_Id;
 		
-		private System.Nullable<System.DateTime> _time;
+		private System.DateTime _time;
 		
-		private System.Nullable<double> _value;
+		private double _value;
 		
     #region 확장성 메서드 정의
     partial void OnLoaded();
@@ -371,11 +347,11 @@ namespace _0128_Vibrometer
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OntrendConfig_IdChanging(System.Nullable<int> value);
+    partial void OntrendConfig_IdChanging(int value);
     partial void OntrendConfig_IdChanged();
-    partial void OnTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeChanging(System.DateTime value);
     partial void OnTimeChanged();
-    partial void OnValueChanging(System.Nullable<double> value);
+    partial void OnValueChanging(double value);
     partial void OnValueChanged();
     #endregion
 		
@@ -405,7 +381,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trendConfig_Id", DbType="Int")]
-		public System.Nullable<int> trendConfig_Id
+		public int trendConfig_Id
 		{
 			get
 			{
@@ -425,7 +401,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="time", Storage="_time", DbType="DateTime2")]
-		public System.Nullable<System.DateTime> Time
+		public System.DateTime Time
 		{
 			get
 			{
@@ -445,7 +421,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="value", Storage="_value", DbType="Float")]
-		public System.Nullable<double> Value
+		public double Value
 		{
 			get
 			{
@@ -496,7 +472,7 @@ namespace _0128_Vibrometer
 		
 		private int _Id;
 		
-		private System.Nullable<int> _type;
+		private int _type;
 		
 		private string _name;
 		
@@ -506,7 +482,7 @@ namespace _0128_Vibrometer
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OntypeChanging(System.Nullable<int> value);
+    partial void OntypeChanging(int value);
     partial void OntypeChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
@@ -538,7 +514,7 @@ namespace _0128_Vibrometer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int", IsDiscriminator=true)]
-		public System.Nullable<int> type
+		public int type
 		{
 			get
 			{
@@ -557,7 +533,7 @@ namespace _0128_Vibrometer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)", CanBeNull=false)]
 		public string name
 		{
 			get

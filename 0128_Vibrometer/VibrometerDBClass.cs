@@ -10,31 +10,31 @@ namespace _0128_Vibrometer
     {
         public float[] Floats;
 
-        partial void OnCreated()
-        {
-            Floats = new float[data.Length / sizeof(float)];
-            //-----
+        //partial void OnCreated()
+        //{
+        //    Floats = new float[data.Length / sizeof(float)];
+        //    //-----
 
-            for (int i = 0; i < e.BytesRecorded; i += 2)
-            {
-                Int16 val = BitConverter.ToInt16(e.Buffer, i);
-                //Int16 val = short(e.Buffer, i);
-                //sampleQueue.Enqueue((float) ((double)(val) / Math.Pow(2, 16) * 200.0));
-                sampleQueue.Enqueue((float)(double)(val));
-            }
+        //    for (int i = 0; i < data.Length; i += 2)
+        //    {
+        //        Int16 val = BitConverter.ToInt16(data, i);
+        //        //Int16 val = short(e.Buffer, i);
+        //        //sampleQueue.Enqueue((float) ((double)(val) / Math.Pow(2, 16) * 200.0));
+        //        sampleQueue.Enqueue((float)(double)(val));
+        //    }
 
-            if (sampleQueue.Count >= SAMPLE_RATE)
-            {
-                this.wave = new WaveData();
-                wave.data = new float[SAMPLE_RATE];
-                for (int i = 0; i < wave.data.Length; i++)
-                {
-                    wave.data[i] = sampleQueue.Dequeue();
-                }
-                sampleQueue.Clear();
-                OnReceivedWaveData(wave);
-            }
-        }
+        //    if (sampleQueue.Count >= SAMPLE_RATE)
+        //    {
+        //        this.wave = new WaveData();
+        //        wave.data = new float[SAMPLE_RATE];
+        //        for (int i = 0; i < wave.data.Length; i++)
+        //        {
+        //            wave.data[i] = sampleQueue.Dequeue();
+        //        }
+        //        sampleQueue.Clear();
+        //        OnReceivedWaveData(wave);
+        //    }
+        //}
 
         //----
 
@@ -68,15 +68,4 @@ namespace _0128_Vibrometer
     }
 
 
-}
-
-    
-
-    
-    
-
-    
-
-    
-    
 }

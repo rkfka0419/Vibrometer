@@ -33,35 +33,8 @@ namespace _0128_Vibrometer
             if (!db.DatabaseExists())
             {
                 db.CreateDatabase();
-                Console.WriteLine("database exist");
+                Console.WriteLine("database created.");
             }
-            RmsConfig rms = new RmsConfig();
-            //rms.id = "RMS1"
-            rms.name = "RMS1";
-            rms.start = 0;
-            rms.end = 100;
-            db.TrendConfig.InsertOnSubmit(rms);
-            db.SubmitChanges();
-
-            PeakConfig peak = new PeakConfig();
-            peak.name = "peak";
-            peak.option = "upper";
-            db.TrendConfig.InsertOnSubmit(peak);
-            db.SubmitChanges();
-
-            //PeakConfig peak = new PeakConfig();
-            //peak.name = "peak";
-            //peak.option = "option1";
-            //context.Con
-            //context.SubmitChanges();
-
-            //var rs = from tmp in db.TrendConfig
-            //         where tmp is RmsConfig
-            //         select tmp;
-
-            //var rs2 = db.TrendConfig.OfType<RmsConfig>();
-            //var waves = db.WaveData_TB.Select(w=> ToWave(w));
-
 
             lineDrawWave = new LineDrawer(lineWave);
             lineDrawFFT = new LineDrawer(lineFFT);
@@ -84,7 +57,6 @@ namespace _0128_Vibrometer
             micControll.StartRecording();
             micControll.OnReceivedWaveData += micControll_OnReceivedWaveData;
         }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -121,12 +93,12 @@ namespace _0128_Vibrometer
             //Draw FFT wave
             lineDrawFFT.DrawLine(spectrum.fft, true);
             
-            for (int i = 0; i < trendCalculator.Length; i++)
-            {
-                //TrendData trendData = trendCalculator[i].GetTrend(wave, spectrum.fft);
-                //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
-                lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
-            }
+            //for (int i = 0; i < trendCalculator.Length; i++)
+            //{
+            //    //TrendData trendData = trendCalculator[i].GetTrend(wave, spectrum.fft);
+            //    //lineDrawerList[i].DrawLine(trendCalculator[i].title, trendData.Value);
+            //    lineDrawerList[i].DrawLine(wave, spectrum, trendCalculator[i]);
+            //}
 
         }
     }

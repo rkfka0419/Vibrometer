@@ -30,7 +30,7 @@ namespace _0128_Vibrometer
 
             for (int i = start; i < end; i++)
             {
-                square += (wave.data[i] * wave.data[i]);
+                square += (wave.Floats[i] * wave.Floats[i]);
             }
             mean = (float)square / wave.data.Length;
             root = (float)Math.Sqrt(mean);

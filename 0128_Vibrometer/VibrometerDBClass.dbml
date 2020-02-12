@@ -11,23 +11,22 @@
     <Type Name="WaveData">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="channel_Id" Type="System.Int32" DbType="Int" CanBeNull="false" />
-      <Column Name="time" Type="System.DateTime" DbType="Time" CanBeNull="true" />
-      <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="false" UpdateCheck="Never" />
     </Type>
   </Table>
   <Table Name="dbo.TrendData" Member="TrendData">
     <Type Name="TrendData">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="trendConfig_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time" Member="Time" Storage="_time" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
-      <Column Name="value" Member="Value" Storage="_value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="trendConfig_Id" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="time" Member="Time" Storage="_time" Type="System.DateTime" DbType="DateTime2" CanBeNull="false" />
+      <Column Name="value" Member="Value" Storage="_value" Type="System.Double" DbType="Float" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TrendConfig" Member="TrendConfig">
     <Type Name="TrendConfig" InheritanceCode="1" IsInheritanceDefault="true">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" IsDiscriminator="true" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="false" IsDiscriminator="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="false" />
       <Type Name="RmsConfig" InheritanceCode="2">
         <Column Name="start" Type="System.Int32" DbType="Int" CanBeNull="true" />
         <Column Name="[end]" Member="end" Type="System.Int32" DbType="Int" CanBeNull="true" />
