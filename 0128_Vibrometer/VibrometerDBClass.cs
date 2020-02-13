@@ -64,7 +64,6 @@ namespace _0128_Vibrometer
 
         public override TrendData CalTrend(WaveData wave, Spectrum spectrum)
         {
-            
             RmsCalculator peak = new RmsCalculator(name, start, end);
             var trendData = peak.GetTrend(wave, spectrum.fft);
             trendData.trendConfig_Id = base.Id;

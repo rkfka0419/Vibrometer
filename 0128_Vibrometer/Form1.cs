@@ -9,7 +9,7 @@ namespace _0128_Vibrometer
 {
     public partial class Form1 : Form
     {
-        MicControll micControll;
+        MicControll micControll; // TO DO -> MicControll 은 채널 엔티티클래스로 바꿀 것
         LineDrawer lineDrawWave;
         LineDrawer lineDrawFFT;
         const string CONFIG_FILE_PATH = @"config.json";
@@ -29,6 +29,7 @@ namespace _0128_Vibrometer
             lineDrawWave = new LineDrawer(lineWave);
             lineDrawFFT = new LineDrawer(lineFFT);
 
+            // DB 없으면 생성
             using (var db = new VibrometerDBClassDataContext(connectionString))
             {
                 if (!db.DatabaseExists())
@@ -59,9 +60,7 @@ namespace _0128_Vibrometer
                 //db.TrendConfig.InsertOnSubmit(peakConfig);
                 //db.SubmitChanges();
             }
-
-
-
+            
             //var jsonStr = JsonConvert.SerializeObject(calculators, Newtonsoft.Json.Formatting.Indented, setting);
             //File.WriteAllText("config.json", jsonStr);
 
