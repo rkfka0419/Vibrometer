@@ -66,8 +66,6 @@ namespace _0128_Vibrometer
         {
             
             RmsCalculator peak = new RmsCalculator(name, start, end);
-            //TrendData trendData = new TrendData();
-            //trendData.trendConfig_Id = base.Id;
             var trendData = peak.GetTrend(wave, spectrum.fft);
             trendData.trendConfig_Id = base.Id;
             return trendData;
@@ -79,9 +77,8 @@ namespace _0128_Vibrometer
         public override TrendData CalTrend(WaveData wave, Spectrum spectrum)
         {
             PeakCalculator peak = new PeakCalculator(name, option);
-            //TrendData trendData = new TrendData();
-            //trendData.trendConfig_Id = base.Id;
             var trendData = peak.GetTrend(wave, spectrum.fft);
+            trendData.trendConfig_Id = base.Id;
             return trendData;
         }
     }

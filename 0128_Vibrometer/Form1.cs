@@ -36,34 +36,33 @@ namespace _0128_Vibrometer
                     db.CreateDatabase();
                     Console.WriteLine("database created.");
                 }
-                var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
-                trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
+                //var setting = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+                //trendCalculator = JsonConvert.DeserializeObject<ITrendCalculator[]>(File.ReadAllText(CONFIG_FILE_PATH), setting);
 
-                RmsConfig rmsConfig1 = new RmsConfig();
-                rmsConfig1.name = "RMS1";
-                rmsConfig1.start = 100;
-                rmsConfig1.end = 1000;
-                db.TrendConfig.InsertOnSubmit(rmsConfig1);
-                db.SubmitChanges();
+                //RmsConfig rmsConfig1 = new RmsConfig();
+                //rmsConfig1.name = "RMS1";
+                //rmsConfig1.start = 100;
+                //rmsConfig1.end = 1000;
+                //db.TrendConfig.InsertOnSubmit(rmsConfig1);
+                //db.SubmitChanges();
 
-                RmsConfig rmsConfig2 = new RmsConfig();
-                rmsConfig2.name = "RMS2";
-                rmsConfig2.start = 1000;
-                rmsConfig2.end = 4000;
-                db.TrendConfig.InsertOnSubmit(rmsConfig2);
-                db.SubmitChanges();
+                //RmsConfig rmsConfig2 = new RmsConfig();
+                //rmsConfig2.name = "RMS2";
+                //rmsConfig2.start = 1000;
+                //rmsConfig2.end = 4000;
+                //db.TrendConfig.InsertOnSubmit(rmsConfig2);
+                //db.SubmitChanges();
 
-                PeakConfig peakConfig = new PeakConfig();
-                peakConfig.name = "Peak1";
-                peakConfig.option = "upper";
-                db.TrendConfig.InsertOnSubmit(peakConfig);
-                db.SubmitChanges();
+                //PeakConfig peakConfig = new PeakConfig();
+                //peakConfig.name = "Peak1";
+                //peakConfig.option = "upper";
+                //db.TrendConfig.InsertOnSubmit(peakConfig);
+                //db.SubmitChanges();
             }
 
 
 
             //var jsonStr = JsonConvert.SerializeObject(calculators, Newtonsoft.Json.Formatting.Indented, setting);
-            ////Console.WriteLine(jsonStr);
             //File.WriteAllText("config.json", jsonStr);
 
             for (int i = 0; i < trendCalculator.Length; i++)
@@ -138,19 +137,19 @@ namespace _0128_Vibrometer
                 //    db.TrendData.InsertOnSubmit(trendData);
                 //    db.SubmitChanges();
                 //}
+                //db.WaveData.InsertOnSubmit(wave);
+                
 
 
-                db.WaveData.InsertOnSubmit(wave);
 
+                //var rmss = db.TrendConfig.OfType<RmsConfig>().Select(rms => rms.CalTrend(wave, spectrum));
+                //db.TrendData.InsertAllOnSubmit(rmss);
 
-                var rmss = db.TrendConfig.OfType<RmsConfig>().Select(rms => rms.CalTrend(wave, spectrum));
-                db.TrendData.InsertAllOnSubmit(rmss);
+                //var peaks = db.TrendData.OfType<PeakConfig>().Select(peak => peak.CalTrend(wave, spectrum));
+                //db.TrendData.InsertAllOnSubmit(peaks);
 
-                var peaks = db.TrendData.OfType<PeakConfig>().Select(peak => peak.CalTrend(wave, spectrum));
-                db.TrendData.InsertAllOnSubmit(peaks);
-
-                var trends = db.TrendConfig.Select(peak => peak.CalTrend(wave, spectrum));
-
+                var trends = db.TrendConfig.Select(trend => trend.CalTrend(wave, spectrum));
+                db.TrendData.InsertAllOnSubmit(trends);
                 db.SubmitChanges();
 
             }
